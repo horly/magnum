@@ -11,7 +11,7 @@ $servicesPage = function () {
 
     $service = request()->query('service', 'sourcing');
 
-    if (! in_array($service, ['sourcing', 'logistics', 'oem'], true)) {
+    if (! in_array($service, ['supply', 'sourcing', 'logistics', 'oem', 'trade', 'consulting'], true)) {
         $service = 'sourcing';
     }
 
