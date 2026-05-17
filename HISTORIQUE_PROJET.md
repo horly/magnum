@@ -420,3 +420,385 @@ public/images/services-supply-side.jpg
 - Ajout des textes anglais et français pour la gestion de la chaîne d'approvisionnement.
 - Ajout d'un style dédié avec taille de texte uniforme pour les paragraphes, sous-titres, points et contact de la page supply chain.
 - Vérification de l'affichage en anglais et en français, puis exécution de `php artisan test` : 2 tests réussis.
+
+## 42. Structure de la page Home
+
+- Création de la vue `resources/views/home.blade.php`.
+- La route `/` pointe maintenant vers la page Home au lieu de la page Services.
+- La page Home ne contient pas encore de contenu, seulement la structure de navigation.
+- Ajout du lien `Home` / `Accueil` avant `About Us` / `À propos` dans la navbar.
+- Le lien `Services` continue de pointer vers `/services`.
+- Ajout des clés de traduction `home_title` et `nav_home` dans les fichiers anglais et français.
+- Ajout d'un fond simple pour la page Home via `.home-shell`, en attendant la création du contenu.
+- Vérification de `/`, `/services`, `/?lang=fr` et exécution de `php artisan test` : 2 tests réussis.
+
+## 43. Contenu professionnel de la page Home
+
+- Ajout du contenu complet de la page Home a partir des deux documents PDF fournis.
+- Conservation du style visuel existant : grand banner, logo blanc, navbar, ligne rose, police Quicksand, couleurs Magnum et footer.
+- Ajout des sections suivantes : hero, a propos, services cles, secteurs accompagnes, pourquoi choisir Magnum, mission, vision, valeurs et appel a contact.
+- Ajout des traductions anglaises et francaises pour tout le nouveau contenu.
+- Ajout des styles dedies dans `public/css/services.css`, sans CSS inline dans la vue.
+- Reutilisation du footer existant avec liens services cliquables et annee dynamique.
+- Verification PHP, controle HTTP anglais/francais de `/`, puis execution de `php artisan test` : 2 tests reussis.
+
+## 44. Amelioration de la page Home et formulaire
+
+- Remplacement de l'image de couverture Home par l'image fournie :
+
+```text
+public/images/home-hero-port.png
+```
+
+- Conservation du header, du footer, de la navigation, des couleurs et de la carte du monde en filigrane sur les sections blanches.
+- Amelioration du texte institutionnel de presentation de Magnum Multi Services.
+- Raffinement des textes des cartes services sans changer la liste des services existants.
+- Ajout d'une section equipe avec un message professionnel sur l'organisation, la reactivite et l'orientation resultats.
+- Ajout d'une section `Get in Touch` avec formulaire de contact : nom, email, telephone, entreprise, service demande, message et bouton d'envoi.
+- Ajout des traductions anglaises et francaises liees a ces nouveaux contenus.
+- Verification PHP, controle HTTP anglais/francais de `/`, puis execution de `php artisan test` : 2 tests reussis.
+
+## 45. Reprise premium du design Home
+
+- Reprise de l'espacement global de la page Home pour obtenir un rendu plus aerien et plus professionnel.
+- Application de la carte du monde en filigrane sur la zone blanche avec une logique plus proche de la page Services.
+- Agrandissement des espacements entre les sections : presentation, services, secteurs, mission, valeurs, equipe et contact.
+- Amelioration des cartes services : marges internes plus larges, grille plus espacee, ombres plus sobres et rendu plus corporate.
+- Refonte visuelle du formulaire de contact : section en deux colonnes, panneau bleu institutionnel, carte formulaire blanche, champs plus grands et mieux alignes.
+- Adaptation responsive pour conserver un affichage propre sur mobile.
+- Verification PHP, controle HTTP de `/`, puis execution de `php artisan test` : 2 tests reussis.
+
+## 46. Formulaire Home inspire du modele fourni
+
+- Refonte de la section formulaire de contact Home en s'inspirant de la capture fournie par le client.
+- Conservation des champs existants du formulaire.
+- Ajout d'un panneau d'information a gauche avec telephone, email, adresse et icones reseaux sociaux.
+- Adaptation du design au theme Magnum : bleu fonce, blanc et rouge-magenta.
+- Transformation du formulaire en panneau blanc avec champs sur lignes fines et bouton rouge-magenta aligne a droite.
+- Adaptation mobile du bloc contact afin que le panneau et le formulaire restent lisibles.
+- Verification PHP, controle HTTP de `/`, puis execution de `php artisan test` : 2 tests reussis.
+
+## 47. Redirection des boutons Contactez-nous vers le formulaire
+
+- Deplacement de l'ancre `#home-contact` directement sur la section formulaire de contact.
+- Mise a jour du bouton `Contactez-nous` de la section CTA pour rediriger vers le formulaire au lieu d'ouvrir un email.
+- Conservation du bouton hero `Contactez-nous` vers la meme ancre formulaire.
+- Ajustement du bouton rouge-magenta de la section CTA : texte centre, largeur minimale, padding plus confortable et prevention du retour a la ligne.
+- Execution de `php artisan test` : 2 tests reussis.
+
+## 48. Remplacement du logo header
+
+- Ajout du nouveau logo header fourni dans :
+
+```text
+public/images/logo-full-n.png
+```
+
+- Remplacement du logo de header dans `resources/views/home.blade.php`.
+- Remplacement du logo de header dans `resources/views/services.blade.php`.
+- Verification PHP des deux vues : aucune erreur de syntaxe.
+
+## 49. Hero carousel de la page Home
+
+- Ajout de quatre images de couverture pour le carrousel Home :
+
+```text
+public/images/home-carousel-1.png
+public/images/home-carousel-2.png
+public/images/home-carousel-3.png
+public/images/home-carousel-4.png
+```
+
+- Remplacement du hero statique de la page Home par un carrousel responsive.
+- Ajout de quatre slides avec textes HTML superposes, sans texte integre dans les images.
+- Ajout d'un overlay sombre/bleu pour ameliorer la lisibilite.
+- Ajout de boutons precedent/suivant et de dots de navigation.
+- Ajout d'un defilement automatique toutes les 6,5 secondes avec pause au survol et au focus.
+- Ajout du JavaScript du carrousel dans `public/js/services.js`.
+- Ajout des styles dedies dans `public/css/services.css`.
+- Verification PHP, controle HTTP de `/`, puis execution de `php artisan test` : 2 tests reussis.
+
+## 50. Ajustement du hero carousel Home
+
+- Passage de l'intervalle automatique du carrousel de 6,5 secondes a 12 secondes.
+- Ajustement du hero afin que le carrousel remonte sous le header.
+- Conservation de la navbar en transparence sur les images du carrousel, sans bande bleue opaque.
+- Ajustement du padding du contenu hero pour compenser la navbar superposee.
+- Verification PHP, controle HTTP de `/`, puis execution de `php artisan test` : 2 tests reussis.
+
+## 51. Logo header, traductions carousel et hauteur hero
+
+- Ajout du nouveau logo header fourni dans :
+
+```text
+public/images/logo-full-ntw.png
+```
+
+- Remplacement du logo de header dans `resources/views/home.blade.php` et `resources/views/services.blade.php`.
+- Deplacement des textes du carrousel Home dans les fichiers de langue anglais et francais.
+- Traduction complete des quatre slides du carrousel : titres, descriptions et boutons.
+- Augmentation de la hauteur du hero carousel sur desktop et mobile pour eviter que les boutons soient masques.
+- Ajustement du padding bas du contenu et de la position des dots pour garder une lecture confortable.
+- Verification PHP des vues et fichiers de langue, controle HTTP anglais/francais de `/`, puis execution de `php artisan test` : 2 tests reussis.
+
+## 52. Espacement des boutons et timing du carousel Home
+
+- Augmentation de l'espace entre la description du slide et les boutons du carrousel Home.
+- Passage du delai automatique du carrousel de 12 secondes a 10 secondes.
+- Verification PHP de `resources/views/home.blade.php`, controle HTTP de `/`, puis execution de `php artisan test` : 2 tests reussis.
+
+## 53. Correction forte de l'espacement des boutons carousel
+
+- Augmentation plus visible de l'espace entre le paragraphe du hero carousel et les boutons d'action.
+- Ajout d'une regle CSS plus specifique sur `.hero-slide-content .home-actions`.
+- Ajout d'un parametre de version sur `services.css` dans les vues Home et Services afin d'eviter l'affichage de l'ancien CSS en cache.
+- Verification PHP des vues Home et Services, controle HTTP de `/`, puis execution de `php artisan test` : 2 tests reussis.
+
+## 54. Padding gauche du contenu carousel Home
+
+- Augmentation du padding gauche du bloc texte du carousel Home a `150px`.
+- Objectif : eloigner clairement le titre, le paragraphe et les boutons du bord gauche ainsi que du bouton precedent du carousel.
+- Mise a jour du parametre de version CSS vers `20260516-4` dans les vues Home et Services.
+- Verification PHP des vues Home et Services, controle HTTP de `/`, puis execution de `php artisan test` : 2 tests reussis.
+
+## 55. Carousel de cards pour les secteurs accompagnes
+
+- Remplacement des simples labels de la section `Secteurs accompagnes` par des cards professionnelles avec grandes icones Font Awesome.
+- Organisation des secteurs en slides de cards avec transition automatique toutes les 5 secondes.
+- Ajout de dots cliquables pour naviguer entre les slides des secteurs.
+- Ajout du comportement JS dedie dans `public/js/services.js` avec pause au survol et au focus.
+- Ajout des styles responsive : 4 cards sur desktop, 2 sur tablette et 1 colonne sur mobile.
+- Ajout d'une cle de traduction pour les labels de navigation du carousel secteurs en anglais et en francais.
+- Mise a jour des versions CSS et JS vers `20260516-5` pour eviter le cache navigateur.
+- Verification PHP de la vue Home et des fichiers de langue, controle HTTP anglais/francais de `/`, puis execution de `php artisan test` : 2 tests reussis.
+
+## 56. Ajustement du carousel secteurs
+
+- Centrage des icones et des titres dans les cards du carousel `Secteurs accompagnes`.
+- Reduction de la hauteur des cards et de l'espace entre les icones et les textes.
+- Ajout de boutons precedent/suivant pour faire defiler manuellement les secteurs.
+- Branchement JS des boutons gauche/droite avec redemarrage de l'autoplay apres interaction.
+- Ajout des traductions des libelles accessibles des boutons precedent/suivant.
+- Mise a jour des versions CSS et JS vers `20260516-6`.
+- Verification PHP des vues et fichiers de langue, controle HTTP de `/`, puis execution de `php artisan test` : 2 tests reussis.
+
+## 57. Marges laterales du carousel secteurs
+
+- Reduction legere de la largeur utile des cards du carousel `Secteurs accompagnes` via un padding horizontal du conteneur.
+- Repositionnement des boutons gauche/droite dans les marges laterales afin qu'ils ne soient plus colles aux cards.
+- Correction de la position des boutons sur tablette.
+- Mise a jour des versions CSS et JS vers `20260516-7`.
+- Verification PHP des vues Home et Services, controle HTTP de `/`, puis execution de `php artisan test` : 2 tests reussis.
+
+## 58. Favicon et hierarchie du bloc contact Home
+
+- Ajout du favicon fourni dans :
+
+```text
+public/images/magnum-favicon.png
+```
+
+- Ajout des balises `rel="icon"` et `rel="shortcut icon"` dans les vues Home et Services.
+- Correction de la hierarchie du bloc contact Home : `Get in Touch` devient le grand titre.
+- Transformation du texte introductif `Let's work together...` en paragraphe plus petit.
+- Ajustement CSS des classes `home-contact-title` et `home-contact-lead`.
+- Mise a jour des versions CSS et JS vers `20260516-8`.
+- Verification PHP des vues Home et Services, controle HTTP de `/`, puis execution de `php artisan test` : 2 tests reussis.
+
+## 59. Page About Us / A propos
+
+- Creation de la nouvelle page `resources/views/about.blade.php` avec le meme header, le meme footer, la meme typographie et la meme identite visuelle que les pages existantes.
+- Ajout de la route `/about` nommee `about` dans `routes/web.php`, avec gestion de la langue via `?lang=en` et `?lang=fr`.
+- Ajout d'une grande banniere About Us avec image corporate/logistique, overlay bleu sombre, titre blanc et sous-titre professionnel.
+- Ajout des sections demandees :
+  - Introduction de Magnum Multi Services avec image professionnelle et bouton Contact.
+  - Notre Approche avec cards, icones Font Awesome, titres et descriptions.
+  - Mission, Vision & Valeurs.
+  - Nos Engagements.
+  - Pourquoi choisir Magnum Multi Services ?
+  - Notre Equipe.
+  - Bloc CTA avant footer.
+- Ajout du fond blanc avec carte du monde en filigrane sur les sections de contenu, coherent avec la page Services.
+- Ajout des traductions completes en anglais et en francais dans `resources/lang/en/services.php` et `resources/lang/fr/services.php`.
+- Mise a jour de la navigation Home et Services pour que le lien About pointe vers `/about` dans la bonne langue.
+- Mise a jour des versions CSS et JS vers `20260516-9`.
+- Verification PHP des routes, vues et fichiers de langue, controle HTTP anglais/francais de `/about`, `/` et `/services`, puis execution de `php artisan test` : 2 tests reussis.
+
+## 60. Ajustements About : adresse et approche corporate
+
+- Ajout de l'adresse de l'entreprise dans la section d'introduction About, avec icone Font Awesome et accent rouge-magenta.
+- Traduction de l'adresse dans les fichiers anglais et francais.
+- Remplacement des cards de la section `Notre Approche` par une disposition en liste corporate avec icones laterales, separations fines et presentation plus sobre.
+- Conservation du reste de la page About sans changement.
+- Mise a jour des versions CSS et JS vers `20260516-10`.
+- Verification PHP des vues et fichiers de langue, controle HTTP anglais/francais de `/about`, puis execution de `php artisan test` : 2 tests reussis.
+
+## 61. Page Secteurs d'activites
+
+- Creation de la page `resources/views/sectors.blade.php` pour presenter les secteurs d'activites de Magnum Multi Services.
+- Ajout de la route `/secteurs-activites` nommee `sectors` dans `routes/web.php`.
+- Renommage du lien de navigation :
+  - Francais : `Secteurs d'activites`.
+  - Anglais : `Business Sectors`.
+- Mise a jour des liens de navigation dans les vues Home, About et Services pour pointer vers la nouvelle page.
+- Ajout d'une banniere hero avec image logistique/portuaire, overlay bleu sombre, titre et sous-titre.
+- Ajout des sections :
+  - Introduction `Nos secteurs d'intervention`.
+  - Grille des secteurs : Mines, Construction, Industrie, Energie, Agriculture, Sante, Logistique, Infrastructures, Maritime & fluvial, Infrastructures portuaires, ONG.
+  - `Solutions adaptees a chaque secteur`.
+  - `Pourquoi choisir Magnum pour vos secteurs d'activites ?`.
+  - Bloc CTA avant footer.
+- Ajout des icones Font Awesome, cards responsives, hover professionnel et fond blanc avec carte du monde en filigrane.
+- Ajout des traductions completes anglais/francais dans les fichiers de langue.
+- Mise a jour des versions CSS et JS vers `20260516-11`.
+- Verification PHP des routes, vues et fichiers de langue, controle HTTP anglais/francais de `/secteurs-activites`, controle des liens depuis Home et Services, puis execution de `php artisan test` : 2 tests reussis.
+
+## 62. Couleurs logo sur la page Secteurs
+
+- Extraction des couleurs du logo header :
+  - Vert : `#006D4E`.
+  - Jaune : `#F1BA40`.
+- Application du vert sur les icones de la grille `Sectors Supported / Secteurs accompagnes`.
+- Application du vert sur le hover des cards de secteurs, avec bordure et ombre legeres.
+- Application du jaune sur les icones et l'accent lateral de la section `Solutions adapted to each sector / Solutions adaptees a chaque secteur`.
+- Mise a jour des versions CSS et JS vers `20260516-12`.
+- Verification PHP des vues, controle HTTP de `/secteurs-activites`, puis execution de `php artisan test` : 2 tests reussis.
+
+## 63. Page SSL Schedules / Horaires des operations
+
+- Creation de la page `resources/views/schedules.blade.php` pour presenter les horaires operationnels, disponibilites de services et informations de planification logistique.
+- Ajout de la route `/ssl-schedules` nommee `ssl-schedules` dans `routes/web.php`, avec gestion de langue via `?lang=en` et `?lang=fr`.
+- Mise a jour des liens `SSL Schedules` dans les headers Home, About, Services et Secteurs pour pointer vers la nouvelle page.
+- Ajout d'une banniere hero avec image logistique/entrepot, overlay bleu sombre, titre visible `Operational Schedules` et sous-titre professionnel.
+- Ajout des sections demandees :
+  - Introduction `Planification des operations`.
+  - Tableau moderne des horaires operationnels avec services, jours, horaires et statuts.
+  - Cards de disponibilites par service avec icones, descriptions et badges.
+  - Bloc `Important Notice`.
+  - Formulaire `Request an Operational Schedule`.
+  - Bloc CTA avant footer.
+- Conservation du header, du footer, de la typographie Quicksand, du fond blanc et de la carte du monde en filigrane.
+- Ajout des traductions completes anglais/francais dans `resources/lang/en/services.php` et `resources/lang/fr/services.php`.
+- Ajout du CSS responsive dedie dans `public/css/services.css`.
+- Mise a jour des versions CSS et JS vers `20260516-13`.
+- Verification PHP des routes, vues et fichiers de langue, controle HTTP anglais/francais de `/ssl-schedules`, puis execution de `php artisan test` : 2 tests reussis.
+
+## 64. Ajustements SSL Schedules : image et statuts
+
+- Ajout de l'image fournie dans :
+
+```text
+public/images/schedules-planning-warehouse.png
+```
+
+- Remplacement de l'image de la section `Planification des operations` par la nouvelle image d'entrepot avec chariot elevateur.
+- Ajout de couleurs distinctes pour les statuts du tableau `Horaires operationnels` :
+  - `Disponible / Available` en vert.
+  - `Sur rendez-vous / By appointment` en jaune.
+  - `Planifie / Planned` en bleu.
+- Mise a jour de la version CSS/JS de la page SSL Schedules vers `20260516-14`.
+- Verification PHP de la vue, controle HTTP de `/ssl-schedules?lang=fr`, controle des classes CSS, puis execution de `php artisan test` : 2 tests reussis.
+
+## 65. SSL Schedules : statuts des cards et horaire coordination
+
+- Application des couleurs de statut sur les badges des cards `Disponibilites par service`.
+- Harmonisation du hover des cards avec la couleur du statut :
+  - Vert pour les services disponibles.
+  - Jaune pour les services sur demande ou sur rendez-vous.
+  - Bleu pour les services planifies.
+- Correction de l'horaire `Logistics Coordination / Coordination logistique` : passage de `08:00 - 18:00` a `08:00 - 17:00`.
+- Mise a jour de la version CSS/JS de la page SSL Schedules vers `20260516-15`.
+- Verification PHP de la vue et des fichiers de langue, controle HTTP de `/ssl-schedules?lang=fr`, puis execution de `php artisan test` : 2 tests reussis.
+
+## 66. SSL Schedules : suppression du formulaire de planification
+
+- Suppression complete de la section formulaire `Demande de planification / Request an Operational Schedule` sur la page SSL Schedules.
+- Conservation du bloc `Important Notice` et du CTA final avant le footer.
+- Verification PHP de `resources/views/schedules.blade.php`.
+- Controle HTTP de `/ssl-schedules?lang=fr` pour confirmer l'absence du formulaire.
+- Execution de `php artisan test` : 2 tests reussis.
+
+## 67. Page Sites
+
+- Creation de la page `resources/views/sites.blade.php` pour presenter les sites, bureaux, implantations et coordonnees de Magnum Multi Services.
+- Ajout de la route `/sites` nommee `sites` dans `routes/web.php`, avec gestion de langue via `?lang=en` et `?lang=fr`.
+- Renommage du libelle anglais de navigation `Locations` en `Sites`.
+- Branchement du lien `Sites` dans les headers et footers rapides des pages Home, About, Services, Secteurs et SSL Schedules.
+- Ajout d'une banniere hero avec image corporate/logistique, overlay bleu sombre, titre `Sites` et sous-titre multilingue.
+- Ajout des sections :
+  - Introduction `Nos sites / Our sites`.
+  - Cards des sites principaux : Kinshasa Office et Kolwezi Office.
+  - Section `Find Us / Nous trouver` avec deux placeholders Google Maps remplaçables et liens vers Google Maps.
+  - Section `Contact Information / Informations de contact`.
+  - Section `Operational Coverage / Couverture operationnelle`.
+  - Bloc CTA avant footer.
+- Ajout des coordonnees demandees :
+  - Telephone : `+243 823 234 444`.
+  - Email : `info@magnum-msgroup.cd`.
+  - Site web : `www.magnum-msgroup.cd`.
+  - WhatsApp : lien `wa.me` base sur le numero fourni.
+- Conservation du header, du footer, de la typographie, des couleurs Magnum et de la carte du monde en filigrane.
+- Ajout des traductions completes anglais/francais dans les fichiers de langue.
+- Ajout du CSS responsive dedie dans `public/css/services.css`.
+- Mise a jour des versions CSS et JS vers `20260516-16`.
+- Verification PHP des routes, vues et fichiers de langue, controle HTTP anglais/francais de `/sites`, controle des liens `Sites` depuis Home et Services, puis execution de `php artisan test` : 2 tests reussis.
+
+## 68. Sites : simplification des sections
+
+- Suppression des sections redondantes sur la page Sites :
+  - `Find Us / Nous trouver`.
+  - `Contact Information / Informations de contact`.
+  - `Operational Coverage / Couverture operationnelle`.
+- Conservation du hero, de l'introduction, des cards Kinshasa/Kolwezi et du CTA avant footer.
+- Verification PHP de `resources/views/sites.blade.php`.
+- Controle HTTP de `/sites?lang=fr` pour confirmer l'absence des sections supprimees et la presence des blocs conserves.
+- Execution de `php artisan test` : 2 tests reussis.
+
+## 69. Page Privacy Policy / Politique de confidentialite
+
+- Creation de la page `resources/views/privacy.blade.php` pour presenter la politique de confidentialite de Magnum Multi Services.
+- Ajout de la route `/privacy-policy` nommee `privacy-policy`, avec gestion de langue via `?lang=en` et `?lang=fr`.
+- Suppression du lien `Careers / Carrieres` de la navbar principale.
+- Remplacement du lien de navigation par `Privacy Policy / Politique de confidentialite` selon la langue active.
+- Correction du lien `Privacy Policy / Politique de confidentialite` dans les footers afin qu'il pointe vers la nouvelle page.
+- Suppression du lien rapide `Careers / Carrieres` dans les footers des pages existantes.
+- Ajout des contenus multilingues anglais/francais :
+  - Introduction.
+  - Informations collectees.
+  - Utilisation des informations.
+  - Protection des donnees.
+  - Partage des informations.
+  - Cookies et analyses.
+  - Conservation des donnees.
+  - Droits des utilisateurs.
+  - Contacts et derniere mise a jour.
+- Conservation du design corporate existant : hero avec overlay bleu, typographie Quicksand, fond blanc, carte du monde en filigrane, cards propres et accents rouge-magenta.
+- Ajout du CSS responsive dedie dans `public/css/services.css`.
+- Mise a jour des versions CSS/JS vers `20260517-1`.
+- Verification PHP des routes, vues et fichiers de langue, controle des liens `privacy-policy` dans les vues, puis execution de `php artisan test` : 2 tests reussis.
+
+## 70. Popup de consentement aux cookies
+
+- Ajout du composant global `resources/views/partials/cookie-consent.blade.php`.
+- Integration du popup de consentement aux cookies sur les pages principales :
+  - Home.
+  - About.
+  - Services.
+  - Secteurs d'activites.
+  - SSL Schedules.
+  - Sites.
+  - Privacy Policy.
+- Ajout des textes multilingues anglais/francais dans `resources/lang/en/services.php` et `resources/lang/fr/services.php`.
+- Ajout d'une mention avec lien direct vers la page `Privacy Policy / Politique de confidentialite`.
+- Ajout du comportement JavaScript dans `public/js/services.js` :
+  - Affichage uniquement si aucun choix n'existe encore.
+  - Sauvegarde `accepted` ou `rejected` dans `localStorage` avec la cle `magnum_cookie_consent`.
+  - Masquage automatique du popup apres le choix.
+  - Evenement `magnum:cookies-accepted` declenche uniquement apres acceptation pour brancher plus tard Google Analytics ou d'autres scripts non essentiels.
+- Ajout du design responsive dans `public/css/services.css` :
+  - Fond bleu fonce.
+  - Bouton principal rouge-magenta.
+  - Bouton secondaire en contour.
+  - Presentation corporate et mobile-friendly.
+- Mise a jour des versions CSS/JS vers `20260517-2`.
+- Verification PHP des vues, du partial et des fichiers de langue, controle des references du popup, puis execution de `php artisan test` : 2 tests reussis.

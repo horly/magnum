@@ -69,20 +69,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $copy['title'] }}</title>
+    <link rel="icon" type="image/png" href="{{ asset('images/magnum-favicon.png') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('images/magnum-favicon.png') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
-    <link href="{{ asset('css/services.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/services.js') }}" defer></script>
+    <link href="{{ asset('css/services.css') }}?v=20260517-2" rel="stylesheet">
+    <script src="{{ asset('js/services.js') }}?v=20260517-2" defer></script>
 </head>
 <body id="top">
     <main class="page">
         <section class="hero" style="--hero-image: url('{{ $heroImage }}')">
             <header class="topbar d-flex align-items-start gap-4">
-                <a class="brand flex-shrink-0" href="/">
-                    <img src="/images/logo-full-w.png" alt="Magnum Multi Services SARL">
+                <a class="brand flex-shrink-0" href="{{ route('home', ['lang' => $locale]) }}">
+                    <img src="/images/logo-full-ntw.png" alt="Magnum Multi Services SARL">
                 </a>
 
                 <button class="menu-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" data-menu-toggle data-open-label="{{ $copy['mobile_menu'] }}" data-close-label="{{ $copy['mobile_menu_close'] }}" aria-label="{{ $copy['mobile_menu'] }}">
@@ -91,12 +93,13 @@
                 </button>
 
                 <nav class="main-nav" id="primary-navigation" aria-label="Primary navigation">
-                    <a href="#">{{ $copy['nav_about'] }}</a>
+                    <a href="{{ route('home', ['lang' => $locale]) }}">{{ $copy['nav_home'] }}</a>
+                    <a href="{{ route('about', ['lang' => $locale]) }}">{{ $copy['nav_about'] }}</a>
                     <a class="active" href="{{ route('services', ['lang' => $locale]) }}">{{ $copy['nav_services'] }}</a>
-                    <a href="#">{{ $copy['nav_industrial'] }}</a>
-                    <a href="#">{{ $copy['nav_ssl'] }}</a>
-                    <a href="#">{{ $copy['nav_locations'] }}</a>
-                    <a href="#">{{ $copy['nav_careers'] }}</a>
+                    <a href="{{ route('sectors', ['lang' => $locale]) }}">{{ $copy['nav_industrial'] }}</a>
+                    <a href="{{ route('ssl-schedules', ['lang' => $locale]) }}">{{ $copy['nav_ssl'] }}</a>
+                    <a href="{{ route('sites', ['lang' => $locale]) }}">{{ $copy['nav_locations'] }}</a>
+                    <a href="{{ route('privacy-policy', ['lang' => $locale]) }}">{{ $copy['footer_privacy'] }}</a>
 
                     <span class="language-switch" aria-label="Languages">
                         <a href="{{ $langLink('fr') }}" aria-label="Afficher le site en francais">Fr</a>
@@ -315,12 +318,12 @@
                 <nav class="footer-column" aria-labelledby="footer-navigation">
                     <h2 id="footer-navigation">{{ $copy['footer_quick'] }}</h2>
                     <ul class="footer-links">
-                        <li><a href="#">{{ $copy['nav_about'] }}</a></li>
-                        <li><a href="{{ route('services', ['lang' => $locale]) }}">Services</a></li>
-                        <li><a href="#">{{ $copy['nav_industrial'] }}</a></li>
-                        <li><a href="#">{{ $copy['footer_privacy'] }}</a></li>
-                        <li><a href="#">{{ $copy['nav_locations'] }}</a></li>
-                        <li><a href="#">{{ $copy['nav_careers'] }}</a></li>
+                        <li><a href="{{ route('home', ['lang' => $locale]) }}">{{ $copy['nav_home'] }}</a></li>
+                        <li><a href="{{ route('about', ['lang' => $locale]) }}">{{ $copy['nav_about'] }}</a></li>
+                        <li><a href="{{ route('services', ['lang' => $locale]) }}">{{ $copy['nav_services'] }}</a></li>
+                        <li><a href="{{ route('sectors', ['lang' => $locale]) }}">{{ $copy['nav_industrial'] }}</a></li>
+                        <li><a href="{{ route('privacy-policy', ['lang' => $locale]) }}">{{ $copy['footer_privacy'] }}</a></li>
+                        <li><a href="{{ route('sites', ['lang' => $locale]) }}">{{ $copy['nav_locations'] }}</a></li>
                     </ul>
                 </nav>
 
@@ -352,6 +355,7 @@
             </div>
             <span class="footer-ghost-card" aria-hidden="true"></span>
         </footer>
+        @include('partials.cookie-consent')
     </main>
 </body>
 </html>
