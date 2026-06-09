@@ -1,5 +1,5 @@
 @php
-    $locale = $locale ?? 'en';
+    $locale = $locale ?? 'fr';
     $isFr = $locale === 'fr';
     $copy = trans('services');
     $langLink = fn (string $lang) => route('home', ['lang' => $lang]);
@@ -24,6 +24,24 @@
         'fa-ship',
         'fa-anchor',
         'fa-hands-holding-circle',
+    ];
+    $whyIcons = [
+        'fa-shield-halved',
+        'fa-globe',
+        'fa-layer-group',
+        'fa-handshake-angle',
+        'fa-bolt',
+        'fa-briefcase',
+        'fa-chart-line',
+    ];
+    $contactBannerIcons = [
+        'fa-boxes-packing',
+        'fa-truck-fast',
+        'fa-handshake',
+        'fa-headset',
+        'fa-diagram-project',
+        'fa-sliders',
+        'fa-seedling',
     ];
     $industrySlides = array_chunk($copy['home_industries'], 4, true);
     $heroSlideMedia = [
@@ -65,8 +83,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
-    <link href="{{ asset('css/services.css') }}?v=20260517-2" rel="stylesheet">
-    <script src="{{ asset('js/services.js') }}?v=20260517-2" defer></script>
+    <link href="{{ asset('css/services.css') }}?v=20260608-10" rel="stylesheet">
+    <script src="{{ asset('js/services.js') }}?v=20260608-1" defer></script>
 </head>
 <body id="top">
     <main class="page home-page">
@@ -106,7 +124,12 @@
                             <div class="hero-slide-content">
                                 <p class="home-eyebrow">{{ $slide['eyebrow'] }}</p>
                                 <h1>{!! nl2br(e($slide['title'])) !!}</h1>
-                                <p>{{ $slide['description'] }}</p>
+                                @isset($slide['subtitle'])
+                                    <p class="hero-slide-subtitle">{{ $slide['subtitle'] }}</p>
+                                @endisset
+                                @foreach ((array) $slide['description'] as $description)
+                                    <p class="hero-slide-description">{{ $description }}</p>
+                                @endforeach
                                 <div class="home-actions">
                                     <a class="home-btn home-btn-primary" href="{{ $slide['primary_url'] }}">{{ $slide['primary'] }}</a>
                                     <a class="home-btn home-btn-outline" href="{{ $slide['secondary_url'] }}">{{ $slide['secondary'] }}</a>
@@ -198,10 +221,17 @@
                 <section class="home-split-section">
                     <div class="home-why-block">
                         <h2>{{ $copy['home_why_title'] }}</h2>
-                        <p>{{ $copy['home_why_text'] }}</p>
+                        @if (! empty($copy['home_why_text']))
+                            <p>{{ $copy['home_why_text'] }}</p>
+                        @endif
                         <ul>
-                            @foreach ($copy['home_why_items'] as $item)
-                                <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>{{ $item }}</span></li>
+                            @foreach ($copy['home_why_items'] as $index => $item)
+                                <li>
+                                    <span class="home-why-icon" aria-hidden="true">
+                                        <i class="fa-solid {{ $whyIcons[$index] ?? 'fa-check' }}"></i>
+                                    </span>
+                                    <span>{{ $item }}</span>
+                                </li>
                             @endforeach
                         </ul>
                     </div>
@@ -225,6 +255,16 @@
                             <span>{{ $value }}</span>
                         @endforeach
                     </div>
+                </section>
+
+                <section class="home-contact-banner" aria-label="{{ $copy['home_contact_banner_label'] }}">
+                    <h2>{{ $copy['home_contact_banner_title'] }}</h2>
+                    @foreach ($copy['home_contact_banner_items'] as $index => $item)
+                        <article>
+                            <span aria-hidden="true"><i class="fa-solid {{ $contactBannerIcons[$index] ?? 'fa-check' }}"></i></span>
+                            <h3>{{ $item }}</h3>
+                        </article>
+                    @endforeach
                 </section>
 
                 <section class="home-team-section">
@@ -254,7 +294,7 @@
                             </li>
                             <li>
                                 <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-                                <span>info.mms@magnum-ms.com</span>
+                                <span>info@magnum-msgroup.cd</span>
                             </li>
                             <li>
                                 <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
@@ -270,46 +310,81 @@
                         </nav>
                     </div>
 
-                    <form class="home-contact-form" action="mailto:info.mms@magnum-ms.com" method="post" enctype="text/plain">
+                    <form class="home-contact-form" action="{{ route('contact.submit', ['lang' => $locale]) }}" method="post" novalidate data-contact-form data-sending-label="{{ $copy['form_sending'] }}" data-submit-label="{{ $copy['form_send'] }}">
+                        @csrf
+
+                        @if (session('contact_status'))
+                            <div class="home-form-alert home-form-alert-success home-form-full" role="status" data-contact-alert>
+                                {{ session('contact_status') }}
+                            </div>
+                        @else
+                            <div class="home-form-alert home-form-full" role="status" hidden data-contact-alert></div>
+                        @endif
+
+                        @if ($errors->any())
+                            <div class="home-form-alert home-form-alert-error home-form-full" role="alert" data-contact-error-summary>
+                                {{ $copy['form_error'] }}
+                            </div>
+                        @else
+                            <div class="home-form-alert home-form-alert-error home-form-full" role="alert" hidden data-contact-error-summary>
+                                {{ $copy['form_error'] }}
+                            </div>
+                        @endif
+
                         <label>
-                            <span>{{ $copy['form_full_name'] }}</span>
-                            <input type="text" name="full_name" required>
+                            <span>{{ $copy['form_full_name'] }} <b class="form-required" aria-hidden="true">*</b></span>
+                            <input class="@error('full_name') is-invalid @enderror" type="text" name="full_name" value="{{ old('full_name') }}" aria-invalid="{{ $errors->has('full_name') ? 'true' : 'false' }}" @error('full_name') aria-describedby="full-name-error" @enderror>
+                            @error('full_name')
+                                <small id="full-name-error">{{ $message }}</small>
+                            @enderror
                         </label>
 
                         <label>
-                            <span>{{ $copy['form_email'] }}</span>
-                            <input type="email" name="email" required>
+                            <span>{{ $copy['form_email'] }} <b class="form-required" aria-hidden="true">*</b></span>
+                            <input class="@error('email') is-invalid @enderror" type="email" name="email" value="{{ old('email') }}" aria-invalid="{{ $errors->has('email') ? 'true' : 'false' }}" @error('email') aria-describedby="email-error" @enderror>
+                            @error('email')
+                                <small id="email-error">{{ $message }}</small>
+                            @enderror
                         </label>
 
                         <label>
                             <span>{{ $copy['form_phone'] }}</span>
-                            <input type="tel" name="phone">
+                            <input class="@error('phone') is-invalid @enderror" type="tel" name="phone" value="{{ old('phone') }}" aria-invalid="{{ $errors->has('phone') ? 'true' : 'false' }}" @error('phone') aria-describedby="phone-error" @enderror>
+                            @error('phone')
+                                <small id="phone-error">{{ $message }}</small>
+                            @enderror
                         </label>
 
                         <label>
                             <span>{{ $copy['form_company'] }}</span>
-                            <input type="text" name="company">
+                            <input class="@error('company') is-invalid @enderror" type="text" name="company" value="{{ old('company') }}" aria-invalid="{{ $errors->has('company') ? 'true' : 'false' }}" @error('company') aria-describedby="company-error" @enderror>
+                            @error('company')
+                                <small id="company-error">{{ $message }}</small>
+                            @enderror
                         </label>
 
                         <label class="home-form-full">
-                            <span>{{ $copy['form_service'] }}</span>
-                            <select name="requested_service" required>
-                                <option value="" selected disabled>{{ $copy['form_service'] }}</option>
-                                <option>{{ $copy['supply_chain'] }}</option>
-                                <option>{{ $copy['sourcing'] }}</option>
-                                <option>{{ $copy['logistics'] }}</option>
-                                <option>{{ $copy['oem'] }}</option>
-                                <option>{{ $copy['trade'] }}</option>
-                                <option>{{ $copy['consulting'] }}</option>
+                            <span>{{ $copy['form_service'] }} <b class="form-required" aria-hidden="true">*</b></span>
+                            <select class="@error('requested_service') is-invalid @enderror" name="requested_service" aria-invalid="{{ $errors->has('requested_service') ? 'true' : 'false' }}" @error('requested_service') aria-describedby="requested-service-error" @enderror>
+                                <option value="" @selected(! old('requested_service'))>{{ $copy['form_service'] }}</option>
+                                @foreach ([$copy['supply_chain'], $copy['sourcing'], $copy['logistics'], $copy['oem'], $copy['trade'], $copy['consulting'], $copy['equipment'], $copy['operations']] as $serviceOption)
+                                    <option value="{{ $serviceOption }}" @selected(old('requested_service') === $serviceOption)>{{ $serviceOption }}</option>
+                                @endforeach
                             </select>
+                            @error('requested_service')
+                                <small id="requested-service-error">{{ $message }}</small>
+                            @enderror
                         </label>
 
                         <label class="home-form-full">
-                            <span>{{ $copy['form_message'] }}</span>
-                            <textarea name="message" rows="5" required></textarea>
+                            <span>{{ $copy['form_message'] }} <b class="form-required" aria-hidden="true">*</b></span>
+                            <textarea class="@error('message') is-invalid @enderror" name="message" rows="5" aria-invalid="{{ $errors->has('message') ? 'true' : 'false' }}" @error('message') aria-describedby="message-error" @enderror>{{ old('message') }}</textarea>
+                            @error('message')
+                                <small id="message-error">{{ $message }}</small>
+                            @enderror
                         </label>
 
-                        <button class="home-btn home-btn-primary home-form-submit" type="submit">{{ $copy['form_send'] }}</button>
+                        <button class="home-btn home-btn-primary home-form-submit" type="submit" data-contact-submit>{{ $copy['form_send'] }}</button>
                     </form>
                 </section>
             </div>
@@ -334,7 +409,7 @@
                         </li>
                         <li>
                             <span class="icon" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span>
-                            <span>info.mms@magnum-ms.com</span>
+                            <span>info@magnum-msgroup.cd</span>
                         </li>
                     </ul>
                 </section>
@@ -360,6 +435,8 @@
                         <li><a href="{{ $serviceLink('oem') }}">{{ $copy['oem'] }}</a></li>
                         <li><a href="{{ $serviceLink('trade') }}">{{ $copy['trade'] }}</a></li>
                         <li><a href="{{ $serviceLink('consulting') }}">{{ $copy['consulting'] }}</a></li>
+                        <li><a href="{{ $serviceLink('equipment') }}">{{ $copy['equipment'] }}</a></li>
+                        <li><a href="{{ $serviceLink('operations') }}">{{ $copy['operations'] }}</a></li>
                     </ul>
                 </section>
 

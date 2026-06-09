@@ -157,7 +157,7 @@
                         </li>
                         <li>
                             <span class="icon" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span>
-                            <span>info.mms@magnum-ms.com</span>
+                            <span>info@magnum-msgroup.cd</span>
                         </li>
                     </ul>
                 </section>
@@ -183,6 +183,8 @@
                         <li><a href="{{ $serviceLink('oem') }}">{{ $copy['oem'] }}</a></li>
                         <li><a href="{{ $serviceLink('trade') }}">{{ $copy['trade'] }}</a></li>
                         <li><a href="{{ $serviceLink('consulting') }}">{{ $copy['consulting'] }}</a></li>
+                        <li><a href="{{ $serviceLink('equipment') }}">{{ $copy['equipment'] }}</a></li>
+                        <li><a href="{{ $serviceLink('operations') }}">{{ $copy['operations'] }}</a></li>
                     </ul>
                 </section>
 

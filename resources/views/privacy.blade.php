@@ -131,6 +131,11 @@
                             <strong>{{ $copy['privacy_contact_kolwezi'] }}</strong>
                             <span>4 Av. Chemin Public Q/Golf<br>C/Dilala - Kolwezi<br>Lualaba - RDC</span>
                         </article>
+                        <article>
+                            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                            <strong>{{ $copy['privacy_contact_kisangani'] }}</strong>
+                            <span>Entrée grand séminaire, réf : Hope International School<br>Q/Motumbe/Makiso<br>Kisangani - Tshopo - RDC</span>
+                        </article>
                     </div>
                 </section>
 
@@ -157,7 +162,7 @@
                         </li>
                         <li>
                             <span class="icon" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span>
-                            <span>info.mms@magnum-ms.com</span>
+                            <span>info@magnum-msgroup.cd</span>
                         </li>
                     </ul>
                 </section>
@@ -183,6 +188,8 @@
                         <li><a href="{{ $serviceLink('oem') }}">{{ $copy['oem'] }}</a></li>
                         <li><a href="{{ $serviceLink('trade') }}">{{ $copy['trade'] }}</a></li>
                         <li><a href="{{ $serviceLink('consulting') }}">{{ $copy['consulting'] }}</a></li>
+                        <li><a href="{{ $serviceLink('equipment') }}">{{ $copy['equipment'] }}</a></li>
+                        <li><a href="{{ $serviceLink('operations') }}">{{ $copy['operations'] }}</a></li>
                     </ul>
                 </section>
 

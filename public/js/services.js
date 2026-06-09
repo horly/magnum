@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const cookieConsent = document.querySelector('[data-cookie-consent]');
             const cookieAcceptButton = document.querySelector('[data-cookie-accept]');
             const cookieRejectButton = document.querySelector('[data-cookie-reject]');
+            const contactForm = document.querySelector('[data-contact-form]');
             const cookieStorageKey = 'magnum_cookie_consent';
 
             if (cookieConsent && cookieAcceptButton && cookieRejectButton) {
@@ -224,6 +225,116 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 showSlide(0);
                 startAutoplay();
+            }
+
+            if (contactForm && window.fetch) {
+                const alertBox = contactForm.querySelector('[data-contact-alert]');
+                const errorSummary = contactForm.querySelector('[data-contact-error-summary]');
+                const submitButton = contactForm.querySelector('[data-contact-submit]');
+                const csrfToken = contactForm.querySelector('input[name="_token"]')?.value || '';
+                const submitLabel = contactForm.dataset.submitLabel || submitButton?.textContent || '';
+                const sendingLabel = contactForm.dataset.sendingLabel || submitLabel;
+
+                const clearFieldErrors = () => {
+                    contactForm.querySelectorAll('.is-invalid').forEach((field) => {
+                        field.classList.remove('is-invalid');
+                        field.setAttribute('aria-invalid', 'false');
+                        field.removeAttribute('aria-describedby');
+                    });
+
+                    contactForm.querySelectorAll('[data-dynamic-error]').forEach((error) => error.remove());
+
+                    if (errorSummary) {
+                        errorSummary.hidden = true;
+                    }
+                };
+
+                const showAlert = (message, type) => {
+                    if (! alertBox) {
+                        return;
+                    }
+
+                    alertBox.textContent = message;
+                    alertBox.hidden = false;
+                    alertBox.classList.toggle('home-form-alert-success', type === 'success');
+                    alertBox.classList.toggle('home-form-alert-error', type === 'error');
+                    alertBox.setAttribute('role', type === 'success' ? 'status' : 'alert');
+                };
+
+                const showFieldErrors = (errors) => {
+                    Object.entries(errors || {}).forEach(([name, messages]) => {
+                        const field = contactForm.querySelector(`[name="${CSS.escape(name)}"]`);
+
+                        if (! field) {
+                            return;
+                        }
+
+                        const errorId = `${name.replace(/_/g, '-')}-ajax-error`;
+                        const error = document.createElement('small');
+
+                        error.id = errorId;
+                        error.dataset.dynamicError = 'true';
+                        error.textContent = Array.isArray(messages) ? messages[0] : messages;
+
+                        field.classList.add('is-invalid');
+                        field.setAttribute('aria-invalid', 'true');
+                        field.setAttribute('aria-describedby', errorId);
+                        field.insertAdjacentElement('afterend', error);
+                    });
+
+                    if (errorSummary) {
+                        errorSummary.hidden = false;
+                    }
+                };
+
+                contactForm.addEventListener('submit', async (event) => {
+                    event.preventDefault();
+
+                    clearFieldErrors();
+
+                    if (alertBox) {
+                        alertBox.hidden = true;
+                    }
+
+                    if (submitButton) {
+                        submitButton.disabled = true;
+                        submitButton.textContent = sendingLabel;
+                    }
+
+                    try {
+                        const response = await fetch(contactForm.action, {
+                            method: 'POST',
+                            body: new FormData(contactForm),
+                            headers: {
+                                'Accept': 'application/json',
+                                'X-Requested-With': 'XMLHttpRequest',
+                                ...(csrfToken ? { 'X-CSRF-TOKEN': csrfToken } : {}),
+                            },
+                        });
+
+                        const payload = await response.json().catch(() => ({}));
+
+                        if (response.ok) {
+                            contactForm.reset();
+                            showAlert(payload.message || '', 'success');
+                            return;
+                        }
+
+                        if (response.status === 422) {
+                            showFieldErrors(payload.errors || {});
+                            return;
+                        }
+
+                        showAlert(payload.message || 'Une erreur est survenue. Veuillez reessayer.', 'error');
+                    } catch (error) {
+                        showAlert('Une erreur est survenue. Veuillez reessayer.', 'error');
+                    } finally {
+                        if (submitButton) {
+                            submitButton.disabled = false;
+                            submitButton.textContent = submitLabel;
+                        }
+                    }
+                });
             }
         });
 

@@ -7,6 +7,8 @@
     $isOem = $service === 'oem';
     $isTrade = $service === 'trade';
     $isConsulting = $service === 'consulting';
+    $isEquipment = $service === 'equipment';
+    $isOperations = $service === 'operations';
     $langLink = fn (string $lang) => request()->fullUrlWithQuery(['lang' => $lang, 'service' => $service]);
     $serviceLink = fn (string $target) => route('services', ['lang' => $locale, 'service' => $target]);
     $copy = trans('services');
@@ -39,6 +41,18 @@
         $copy['hero_title'] = $copy['consulting_hero_title'];
         $copy['hero_subtitle'] = $copy['consulting_hero_subtitle'];
         $copy['title'] = 'Magnum Multi Services SARL - ' . $copy['consulting_hero_title'];
+    }
+
+    if ($isEquipment) {
+        $copy['hero_title'] = $copy['equipment_hero_title'];
+        $copy['hero_subtitle'] = $copy['equipment_hero_subtitle'];
+        $copy['title'] = 'Magnum Multi Services SARL - ' . $copy['equipment_hero_title'];
+    }
+
+    if ($isOperations) {
+        $copy['hero_title'] = $copy['operations_hero_title'];
+        $copy['hero_subtitle'] = $copy['operations_hero_subtitle'];
+        $copy['title'] = 'Magnum Multi Services SARL - ' . $copy['operations_hero_title'];
     }
 
     $heroImage = '/images/services-hero.jpg';
@@ -126,6 +140,8 @@
                         <a class="service-link {{ $service === 'oem' ? 'active' : '' }}" href="{{ $serviceLink('oem') }}">{{ $copy['oem'] }}</a>
                         <a class="service-link {{ $service === 'trade' ? 'active' : '' }}" href="{{ $serviceLink('trade') }}">{{ $copy['trade'] }}</a>
                         <a class="service-link {{ $service === 'consulting' ? 'active' : '' }}" href="{{ $serviceLink('consulting') }}">{{ $copy['consulting'] }}</a>
+                        <a class="service-link {{ $service === 'equipment' ? 'active' : '' }}" href="{{ $serviceLink('equipment') }}">{{ $copy['equipment'] }}</a>
+                        <a class="service-link {{ $service === 'operations' ? 'active' : '' }}" href="{{ $serviceLink('operations') }}">{{ $copy['operations'] }}</a>
                     </div>
                     @if ($isConsulting)
                         <div class="consulting-side-photo" aria-label="Consulting advisor visual"></div>
@@ -258,6 +274,54 @@
 
                         <p class="consulting-contact"><strong>{{ $copy['get_in_touch'] }}</strong> {{ $copy['consulting_contact_text'] }}</p>
                     </article>
+                @elseif ($isEquipment)
+                    <article class="content-column trade-layout">
+                        <h2 class="section-title">{{ $copy['equipment_hero_title'] }}</h2>
+                        <p class="section-kicker">{{ $copy['equipment_hero_subtitle'] }}</p>
+
+                        @foreach ($copy['equipment_intro'] as $paragraph)
+                            <p class="lead-copy">{{ $paragraph }}</p>
+                        @endforeach
+
+                        <div class="trade-content-grid">
+                            <div>
+                                <h3 class="trade-services-title">{{ $copy['equipment_services_title'] }}</h3>
+                                <ul class="trade-products">
+                                    @foreach ($copy['equipment_items'] as $item)
+                                        <li>{{ $item }}</li>
+                                    @endforeach
+                                </ul>
+
+                                <p class="trade-contact"><strong>{{ $copy['contact_title'] }}</strong> {{ $copy['equipment_contact_text'] }}</p>
+                            </div>
+
+                            <div class="supply-photo" aria-label="Industrial equipment supply visual"></div>
+                        </div>
+                    </article>
+                @elseif ($isOperations)
+                    <article class="content-column trade-layout">
+                        <h2 class="section-title">{{ $copy['operations_hero_title'] }}</h2>
+                        <p class="section-kicker">{{ $copy['operations_hero_subtitle'] }}</p>
+
+                        @foreach ($copy['operations_intro'] as $paragraph)
+                            <p class="lead-copy">{{ $paragraph }}</p>
+                        @endforeach
+
+                        <div class="trade-content-grid">
+                            <div>
+                                <h3 class="trade-services-title">{{ $copy['operations_services_title'] }}</h3>
+                                <ul class="trade-products">
+                                    @foreach ($copy['operations_items'] as $item)
+                                        <li>{{ $item }}</li>
+                                    @endforeach
+                                </ul>
+
+                                <p class="trade-contact"><strong>{{ $copy['contact_title'] }}</strong> {{ $copy['operations_contact_text'] }}</p>
+                            </div>
+
+                            <div class="consulting-side-photo" aria-label="Operational support visual"></div>
+                        </div>
+                    </article>
                 @else
                     <article class="content-column">
                         <div>
@@ -310,7 +374,7 @@
                         </li>
                         <li>
                             <span class="icon" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span>
-                            <span>info.mms@magnum-ms.com</span>
+                            <span>info@magnum-msgroup.cd</span>
                         </li>
                     </ul>
                 </section>
@@ -336,6 +400,8 @@
                         <li><a href="{{ $serviceLink('oem') }}">{{ $copy['oem'] }}</a></li>
                         <li><a href="{{ $serviceLink('trade') }}">{{ $copy['trade'] }}</a></li>
                         <li><a href="{{ $serviceLink('consulting') }}">{{ $copy['consulting'] }}</a></li>
+                        <li><a href="{{ $serviceLink('equipment') }}">{{ $copy['equipment'] }}</a></li>
+                        <li><a href="{{ $serviceLink('operations') }}">{{ $copy['operations'] }}</a></li>
                     </ul>
                 </section>
 

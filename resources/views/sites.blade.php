@@ -101,6 +101,26 @@
                     </div>
                 </section>
 
+                <section class="sites-coverage-section">
+                    <h2>{{ $copy['sites_coverage_title'] }}</h2>
+                    <p>{{ $copy['sites_coverage_text'] }}</p>
+                    <div class="sites-coverage-list">
+                        @foreach ($copy['sites_coverage_items'] as $item)
+                            <span>{{ $item }}</span>
+                        @endforeach
+                    </div>
+                </section>
+
+                <section class="sites-coverage-section">
+                    <h2>{{ $copy['sites_domains_title'] }}</h2>
+                    <p>{{ $copy['sites_domains_text'] }}</p>
+                    <div class="sites-coverage-list">
+                        @foreach ($copy['sites_domains_items'] as $item)
+                            <span>{{ $item }}</span>
+                        @endforeach
+                    </div>
+                </section>
+
                 <section class="sites-cta">
                     <div>
                         <h2>{{ $copy['sites_cta_title'] }}</h2>
@@ -133,7 +153,7 @@
                         </li>
                         <li>
                             <span class="icon" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span>
-                            <span>info.mms@magnum-ms.com</span>
+                            <span>info@magnum-msgroup.cd</span>
                         </li>
                     </ul>
                 </section>
@@ -159,6 +179,8 @@
                         <li><a href="{{ $serviceLink('oem') }}">{{ $copy['oem'] }}</a></li>
                         <li><a href="{{ $serviceLink('trade') }}">{{ $copy['trade'] }}</a></li>
                         <li><a href="{{ $serviceLink('consulting') }}">{{ $copy['consulting'] }}</a></li>
+                        <li><a href="{{ $serviceLink('equipment') }}">{{ $copy['equipment'] }}</a></li>
+                        <li><a href="{{ $serviceLink('operations') }}">{{ $copy['operations'] }}</a></li>
                     </ul>
                 </section>
 

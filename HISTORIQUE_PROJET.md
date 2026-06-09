@@ -802,3 +802,130 @@ public/images/schedules-planning-warehouse.png
   - Presentation corporate et mobile-friendly.
 - Mise a jour des versions CSS/JS vers `20260517-2`.
 - Verification PHP des vues, du partial et des fichiers de langue, controle des references du popup, puis execution de `php artisan test` : 2 tests reussis.
+
+## 71. Mise a jour du premier slide Home
+
+- Mise a jour du premier slide du carrousel de la page Home avec le nouveau message corporate :
+  - `CONNECTER LES INDUSTRIES. FOURNIR DES SOLUTIONS.`
+  - `Solutions Logistiques, Industrielles & Supply Chain`
+  - deux paragraphes de presentation sur l'accompagnement, l'expertise multisectorielle et le reseau de partenaires.
+- Ajout de la structure optionnelle `subtitle` et de descriptions multiples dans le rendu du carrousel Home.
+- Mise a jour de la version CSS de la page Home vers `20260608-3`.
+- Ajout des styles responsive dedies au sous-titre et aux paragraphes du hero.
+- Mise a jour de la traduction anglaise equivalente pour conserver le comportement bilingue.
+- Verification PHP de la vue Home et des fichiers de langue, puis execution de `php artisan test` : 2 tests reussis.
+
+## 72. Domaines d'expertise sur la page Home
+
+- Remplacement de la section `Nos services cles` par `NOS DOMAINES D'EXPERTISE`.
+- Mise a jour des cinq cards affichees sur la page Home :
+  - Solutions de sourcing.
+  - Solutions logistiques.
+  - Representation OEM.
+  - Commerce General B2B.
+  - Conseil & accompagnement.
+- Suppression de la card `Gestion de la supply chain` dans cette section Home.
+- Mise a jour des textes francais et anglais dans les fichiers de langue.
+
+## 73. Section Pourquoi choisir Magnum
+
+- Transformation du bloc `Pourquoi choisir Magnum Multi Services ?` en section visuelle avec icones.
+- Suppression du long paragraphe introductif sur la page Home.
+- Mise a jour du titre en `POURQUOI CHOISIR MAGNUM ?`.
+- Ajout des sept arguments demandes :
+  - Solutions fiables et flexibles.
+  - Reseau international de fournisseurs.
+  - Expertise multisectorielle.
+  - Approche personnalisee.
+  - Reactivite & flexibilite.
+  - Accompagnement professionnel.
+  - Solutions adaptees aux besoins du marche.
+- Ajout d'icones Font Awesome dediees pour chaque argument.
+- Mise a jour des textes anglais equivalents et de la version CSS Home vers `20260608-4`.
+
+## 74. Bandeau avant formulaire de contact Home
+
+- Ajout d'un bandeau visuel avec icones avant le formulaire de contact de la page Home, avec le titre `Nos forces`.
+- Ajout des sept points :
+  - Approvisionnement fiable.
+  - Coordination logistique.
+  - Reseau de partenaires.
+  - Support operationnel.
+  - Expertise supply chain.
+  - Solutions sur mesure.
+  - Vision long terme.
+- Ajout des traductions anglaises equivalentes dans les fichiers de langue.
+- Ajout du CSS responsive du bandeau et mise a jour de la version CSS Home vers `20260608-6`.
+- Deplacement du bandeau `Nos forces` juste apres la section `Nos valeurs`.
+- Ajustement de l'espacement avec la section equipe et mise a jour de la version CSS Home vers `20260608-7`.
+- Remplacement du texte du CTA bleu Home par une phrase de disponibilite pour les demandes d'information, de collaboration ou de partenariat.
+
+## 75. Reprise editoriale des pages internes
+
+- Mise a jour de la page A propos selon la structure demandee :
+  - banniere A propos ;
+  - A propos de Magnum ;
+  - Mission, Vision & Valeurs ;
+  - Notre Approche ;
+  - Nos Engagements ;
+  - Notre Equipe ;
+  - CTA final.
+- Mise a jour de la page Services avec les contenus reformules pour :
+  - gestion de la chaine d'approvisionnement ;
+  - solutions de sourcing ;
+  - solutions logistiques ;
+  - representation OEM ;
+  - commerce general B2B ;
+  - conseil & accompagnement ;
+  - fourniture d'equipements industriels ;
+  - support operationnel.
+- Ajout des variantes de service `equipment` et `operations` dans la route `/services`.
+- Ajout des liens `Fourniture d'equipements industriels` et `Support operationnel` dans la sidebar Services, les footers et le formulaire Home.
+- Mise a jour de la page Secteurs d'activites avec les nouveaux textes, le secteur `Transport fluvial` et les blocs de solutions adaptees.
+- Mise a jour de la page Horaires SSL en `Organisation des operations`, avec disponibilites de services, modes d'intervention, note importante et CTA.
+- Mise a jour de la page Sites avec Kinshasa, Kolwezi, Kisangani, les atouts de presence et les domaines d'intervention.
+- Mise a jour de la politique de confidentialite selon le nouveau texte fourni et ajout de l'adresse Kisangani.
+- Ajout des traductions anglaises equivalentes pour les nouvelles cles et services.
+
+## 76. Formulaire de contact SMTP
+
+- Remplacement de l'ancien formulaire `mailto:` de la page Home par un envoi Laravel via route POST `/contact`.
+- Ajout du controleur `ContactFormController` avec validation des champs du formulaire.
+- Ajout du Mailable `ContactFormMessage`.
+- Ajout des vues email HTML et texte pour les demandes de contact.
+- Configuration SMTP dans `.env` avec le compte webmaster fourni.
+- Les demandes de contact sont envoyees a `info@magnum-msgroup.cd`.
+- Ajout des messages de succes et d'erreur multilingues du formulaire.
+- Ajout du style des alertes et erreurs de formulaire, version CSS Home `20260608-8`.
+
+## 77. Verification reelle du formulaire de contact
+
+- Deplacement de la validation du formulaire dans `ContactFormRequest`.
+- Desactivation de la validation native HTML avec `novalidate` pour laisser Laravel afficher les erreurs.
+- Ajout de messages d'erreur FR/EN sous chaque champ obligatoire.
+- Ajout d'un controle de service demande pour refuser les services non proposes par le site.
+- Ajout d'etats visuels `is-invalid` et `aria-invalid` sur les champs en erreur.
+- Mise a jour de la version CSS Home vers `20260608-9`.
+- Ajout de tests Pest pour l'envoi valide, les champs obligatoires, l'affichage HTML des erreurs et le refus des services inconnus.
+
+## 78. Envoi du formulaire sans actualisation
+
+- Ajout d'une reponse JSON du controleur de contact pour les soumissions AJAX.
+- Interception JavaScript de la soumission du formulaire Home avec `fetch`.
+- Affichage des erreurs de validation sous les champs sans recharger la page.
+- Affichage du succes sans rechargement et remise a zero du formulaire apres envoi.
+- Ajout d'un etat bouton desactive pendant l'envoi.
+- Mise a jour des versions CSS/JS Home vers `20260608-10` et `20260608-1`.
+- Ajout de tests Pest pour les reponses JSON de succes et de validation.
+
+## 79. Langue par defaut et champs obligatoires
+
+- Passage de la langue par defaut du site en francais dans les routes et la configuration Laravel.
+- Mise a jour de `.env` avec `APP_LOCALE=fr`.
+- Ajout d'un asterisque rose sur les labels des champs obligatoires du formulaire de contact.
+- Ajout d'un test Pest confirmant que la page d'accueil s'affiche en francais par defaut.
+
+## 80. Mise a jour de l'adresse email publique
+
+- Remplacement de l'ancienne adresse `info.mms@magnum-ms.com` par `info@magnum-msgroup.cd` dans les vues publiques.
+- Verification qu'il ne reste plus d'occurrence de l'ancien domaine `.com` dans le projet.

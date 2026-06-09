@@ -77,24 +77,6 @@
                 </section>
 
                 <section class="about-section">
-                    <div class="about-section-heading">
-                        <h2>{{ $copy['about_approach_title'] }}</h2>
-                        <p>{{ $copy['about_approach_text'] }}</p>
-                    </div>
-                    <div class="about-approach-list">
-                        @foreach ($copy['about_approach_cards'] as $card)
-                            <article class="about-approach-item">
-                                <span class="about-card-icon" aria-hidden="true"><i class="fa-solid {{ $card['icon'] }}"></i></span>
-                                <div>
-                                    <h3>{{ $card['title'] }}</h3>
-                                    <p>{{ $card['text'] }}</p>
-                                </div>
-                            </article>
-                        @endforeach
-                    </div>
-                </section>
-
-                <section class="about-section">
                     <div class="about-section-heading compact">
                         <h2>{{ $copy['about_mvv_title'] }}</h2>
                     </div>
@@ -120,6 +102,24 @@
 
                 <section class="about-section">
                     <div class="about-section-heading">
+                        <h2>{{ $copy['about_approach_title'] }}</h2>
+                        <p>{{ $copy['about_approach_text'] }}</p>
+                    </div>
+                    <div class="about-approach-list">
+                        @foreach ($copy['about_approach_cards'] as $card)
+                            <article class="about-approach-item">
+                                <span class="about-card-icon" aria-hidden="true"><i class="fa-solid {{ $card['icon'] }}"></i></span>
+                                <div>
+                                    <h3>{{ $card['title'] }}</h3>
+                                    <p>{{ $card['text'] }}</p>
+                                </div>
+                            </article>
+                        @endforeach
+                    </div>
+                </section>
+
+                <section class="about-section">
+                    <div class="about-section-heading">
                         <h2>{{ $copy['about_commitments_title'] }}</h2>
                     </div>
                     <div class="about-commitment-grid">
@@ -128,23 +128,6 @@
                                 <span aria-hidden="true"><i class="fa-solid {{ $commitment['icon'] }}"></i></span>
                                 <h3>{{ $commitment['title'] }}</h3>
                                 <p>{{ $commitment['text'] }}</p>
-                            </article>
-                        @endforeach
-                    </div>
-                </section>
-
-                <section class="about-section about-choose-section">
-                    <div class="about-section-heading compact">
-                        <h2>{{ $copy['about_choose_title'] }}</h2>
-                    </div>
-                    <div class="about-choose-grid">
-                        @foreach ($copy['about_choose_items'] as $item)
-                            <article>
-                                <i class="fa-solid fa-check" aria-hidden="true"></i>
-                                <div>
-                                    <h3>{{ $item['title'] }}</h3>
-                                    <p>{{ $item['text'] }}</p>
-                                </div>
                             </article>
                         @endforeach
                     </div>
@@ -192,7 +175,7 @@
                         </li>
                         <li>
                             <span class="icon" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span>
-                            <span>info.mms@magnum-ms.com</span>
+                            <span>info@magnum-msgroup.cd</span>
                         </li>
                     </ul>
                 </section>
@@ -218,6 +201,8 @@
                         <li><a href="{{ $serviceLink('oem') }}">{{ $copy['oem'] }}</a></li>
                         <li><a href="{{ $serviceLink('trade') }}">{{ $copy['trade'] }}</a></li>
                         <li><a href="{{ $serviceLink('consulting') }}">{{ $copy['consulting'] }}</a></li>
+                        <li><a href="{{ $serviceLink('equipment') }}">{{ $copy['equipment'] }}</a></li>
+                        <li><a href="{{ $serviceLink('operations') }}">{{ $copy['operations'] }}</a></li>
                     </ul>
                 </section>
 

@@ -1,12 +1,13 @@
 <?php
 
+use App\Http\Controllers\ContactFormController;
 use Illuminate\Support\Facades\Route;
 
 $homePage = function () {
-    $locale = request()->query('lang', session('locale', 'en'));
+    $locale = request()->query('lang', session('locale', 'fr'));
 
     if (! in_array($locale, ['en', 'fr'], true)) {
-        $locale = 'en';
+        $locale = 'fr';
     }
 
     session(['locale' => $locale]);
@@ -18,15 +19,15 @@ $homePage = function () {
 };
 
 $servicesPage = function () {
-    $locale = request()->query('lang', session('locale', 'en'));
+    $locale = request()->query('lang', session('locale', 'fr'));
 
     if (! in_array($locale, ['en', 'fr'], true)) {
-        $locale = 'en';
+        $locale = 'fr';
     }
 
     $service = request()->query('service', 'sourcing');
 
-    if (! in_array($service, ['supply', 'sourcing', 'logistics', 'oem', 'trade', 'consulting'], true)) {
+    if (! in_array($service, ['supply', 'sourcing', 'logistics', 'oem', 'trade', 'consulting', 'equipment', 'operations'], true)) {
         $service = 'sourcing';
     }
 
@@ -40,10 +41,10 @@ $servicesPage = function () {
 };
 
 $aboutPage = function () {
-    $locale = request()->query('lang', session('locale', 'en'));
+    $locale = request()->query('lang', session('locale', 'fr'));
 
     if (! in_array($locale, ['en', 'fr'], true)) {
-        $locale = 'en';
+        $locale = 'fr';
     }
 
     session(['locale' => $locale]);
@@ -55,10 +56,10 @@ $aboutPage = function () {
 };
 
 $sectorsPage = function () {
-    $locale = request()->query('lang', session('locale', 'en'));
+    $locale = request()->query('lang', session('locale', 'fr'));
 
     if (! in_array($locale, ['en', 'fr'], true)) {
-        $locale = 'en';
+        $locale = 'fr';
     }
 
     session(['locale' => $locale]);
@@ -70,10 +71,10 @@ $sectorsPage = function () {
 };
 
 $schedulesPage = function () {
-    $locale = request()->query('lang', session('locale', 'en'));
+    $locale = request()->query('lang', session('locale', 'fr'));
 
     if (! in_array($locale, ['en', 'fr'], true)) {
-        $locale = 'en';
+        $locale = 'fr';
     }
 
     session(['locale' => $locale]);
@@ -85,10 +86,10 @@ $schedulesPage = function () {
 };
 
 $sitesPage = function () {
-    $locale = request()->query('lang', session('locale', 'en'));
+    $locale = request()->query('lang', session('locale', 'fr'));
 
     if (! in_array($locale, ['en', 'fr'], true)) {
-        $locale = 'en';
+        $locale = 'fr';
     }
 
     session(['locale' => $locale]);
@@ -100,10 +101,10 @@ $sitesPage = function () {
 };
 
 $privacyPage = function () {
-    $locale = request()->query('lang', session('locale', 'en'));
+    $locale = request()->query('lang', session('locale', 'fr'));
 
     if (! in_array($locale, ['en', 'fr'], true)) {
-        $locale = 'en';
+        $locale = 'fr';
     }
 
     session(['locale' => $locale]);
@@ -115,6 +116,8 @@ $privacyPage = function () {
 };
 
 Route::get('/', $homePage)->name('home');
+
+Route::post('/contact', ContactFormController::class)->name('contact.submit');
 
 Route::get('/about', $aboutPage)->name('about');
 
