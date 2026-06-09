@@ -370,7 +370,7 @@
                         </li>
                         <li>
                             <span class="icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
-                            <span>+243 990 347 544</span>
+                            <span>+243 823 234 444</span>
                         </li>
                         <li>
                             <span class="icon" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span>

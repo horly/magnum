@@ -929,3 +929,8 @@ public/images/schedules-planning-warehouse.png
 
 - Remplacement de l'ancienne adresse `info.mms@magnum-ms.com` par `info@magnum-msgroup.cd` dans les vues publiques.
 - Verification qu'il ne reste plus d'occurrence de l'ancien domaine `.com` dans le projet.
+
+## 81. Mise a jour du numero de telephone public
+
+- Remplacement de l'ancien numero `+243 990 347 544` par `+243 823 234 444` dans les vues publiques.
+- Verification qu'il ne reste plus d'occurrence de l'ancien numero dans le projet.
