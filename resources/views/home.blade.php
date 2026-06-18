@@ -12,6 +12,13 @@
         'trade' => 'fa-handshake',
         'consulting' => 'fa-compass-drafting',
     ];
+    $serviceImages = [
+        'sourcing' => '/images/home-card-sourcing.png',
+        'logistics' => '/images/home-card-logistics.png',
+        'oem' => '/images/home-card-oem.png',
+        'trade' => '/images/home-card-trade.png',
+        'consulting' => '/images/home-card-consulting.png',
+    ];
     $industryIcons = [
         'fa-mountain-city',
         'fa-helmet-safety',
@@ -34,19 +41,68 @@
         'fa-briefcase',
         'fa-chart-line',
     ];
-    $contactBannerIcons = [
-        'fa-boxes-packing',
-        'fa-truck-fast',
-        'fa-handshake',
-        'fa-headset',
-        'fa-diagram-project',
-        'fa-sliders',
-        'fa-seedling',
+    $whyFeatureImages = [
+        '/images/home-why-reliable.png',
+        '/images/home-why-network.png',
+        '/images/home-why-expertise.png',
+        '/images/home-why-personalized.png',
+        '/images/home-why-reactive.png',
+        '/images/home-why-support.png',
     ];
-    $industrySlides = array_chunk($copy['home_industries'], 4, true);
+    $whyFeatureCards = array_map(
+        fn ($item, $index) => array_merge($item, [
+            'image' => $whyFeatureImages[$index] ?? '/images/home-why-main.png',
+        ]),
+        array_values($copy['home_why_cards'] ?? []),
+        array_keys(array_values($copy['home_why_cards'] ?? []))
+    );
+    $valueImages = [
+        '/images/home-value-integrity.png',
+        '/images/home-value-reliability.png',
+        '/images/home-value-excellence.png',
+        '/images/home-value-teamwork.png',
+        '/images/home-value-responsibility.png',
+    ];
+    $valueIcons = [
+        'fa-shield-halved',
+        'fa-bullseye',
+        'fa-lightbulb',
+        'fa-users',
+        'fa-leaf',
+    ];
+    $valueCards = array_map(
+        fn ($item, $index) => array_merge($item, [
+            'image' => $valueImages[$index] ?? '/images/home-value-integrity.png',
+            'icon' => $valueIcons[$index] ?? 'fa-check',
+        ]),
+        array_values($copy['home_value_cards'] ?? []),
+        array_keys(array_values($copy['home_value_cards'] ?? []))
+    );
+    $industryImages = [
+        '/images/home-sector-mines.png',
+        '/images/home-sector-construction.png',
+        '/images/home-sector-industry.png',
+        '/images/home-sector-energy.png',
+        '/images/home-sector-agriculture.png',
+        '/images/home-sector-health.png',
+        '/images/home-sector-logistics.png',
+        '/images/home-sector-infrastructure.png',
+        '/images/home-sector-maritime.png',
+        '/images/home-sector-port.png',
+        '/images/home-sector-ngo.png',
+    ];
+    $industrySlides = array_map(
+        fn ($industry, $index) => [
+            'title' => $industry,
+            'image' => $industryImages[$index] ?? '/images/home-sector-logistics.png',
+            'icon' => $industryIcons[$index] ?? 'fa-building',
+        ],
+        array_values($copy['home_industries']),
+        array_keys(array_values($copy['home_industries']))
+    );
     $heroSlideMedia = [
         [
-            'image' => '/images/home-carousel-1.png',
+            'image' => '/images/home-proposal-ship.png',
             'primary_url' => route('services', ['lang' => $locale]),
             'secondary_url' => '#home-contact',
         ],
@@ -83,7 +139,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
-    <link href="{{ asset('css/services.css') }}?v=20260608-10" rel="stylesheet">
+    <link href="{{ asset('css/services.css') }}?v=20260618-3" rel="stylesheet">
     <script src="{{ asset('js/services.js') }}?v=20260608-1" defer></script>
 </head>
 <body id="top">
@@ -91,7 +147,7 @@
         <section class="home-shell">
             <header class="topbar d-flex align-items-start gap-4">
                 <a class="brand flex-shrink-0" href="{{ route('home', ['lang' => $locale]) }}">
-                    <img src="/images/logo-full-ntw.png" alt="Magnum Multi Services SARL">
+                    <img src="/images/logo-full-ntwb.png" alt="Magnum Multi Services SARL">
                 </a>
 
                 <button class="menu-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" data-menu-toggle data-open-label="{{ $copy['mobile_menu'] }}" data-close-label="{{ $copy['mobile_menu_close'] }}" aria-label="{{ $copy['mobile_menu'] }}">
@@ -119,21 +175,28 @@
             <div class="hero-carousel" data-hero-carousel data-interval="10000" aria-label="Magnum Multi Services highlights">
                 <div class="hero-carousel-track">
                     @foreach ($heroSlides as $index => $slide)
-                        <article class="hero-slide{{ $index === 0 ? ' is-active' : '' }}" data-hero-slide aria-hidden="{{ $index === 0 ? 'false' : 'true' }}">
+                        <article class="hero-slide{{ $index === 0 ? ' is-active' : '' }}{{ ($slide['layout'] ?? null) === 'proposal' ? ' hero-slide-proposal' : '' }}" data-hero-slide aria-hidden="{{ $index === 0 ? 'false' : 'true' }}">
                             <img src="{{ $slide['image'] }}" alt="" aria-hidden="true">
                             <div class="hero-slide-content">
-                                <p class="home-eyebrow">{{ $slide['eyebrow'] }}</p>
-                                <h1>{!! nl2br(e($slide['title'])) !!}</h1>
-                                @isset($slide['subtitle'])
-                                    <p class="hero-slide-subtitle">{{ $slide['subtitle'] }}</p>
-                                @endisset
-                                @foreach ((array) $slide['description'] as $description)
-                                    <p class="hero-slide-description">{{ $description }}</p>
-                                @endforeach
-                                <div class="home-actions">
-                                    <a class="home-btn home-btn-primary" href="{{ $slide['primary_url'] }}">{{ $slide['primary'] }}</a>
-                                    <a class="home-btn home-btn-outline" href="{{ $slide['secondary_url'] }}">{{ $slide['secondary'] }}</a>
+                                <div class="hero-slide-copy">
+                                    @if (($slide['layout'] ?? null) !== 'proposal')
+                                        <p class="home-eyebrow">{{ $slide['eyebrow'] }}</p>
+                                    @endif
+                                    <h1>{!! nl2br(e($slide['title'])) !!}</h1>
+                                    @isset($slide['subtitle'])
+                                        <p class="hero-slide-subtitle">{{ $slide['subtitle'] }}</p>
+                                    @endisset
+                                    @foreach ((array) $slide['description'] as $description)
+                                        <p class="hero-slide-description">{{ $description }}</p>
+                                    @endforeach
+                                    <div class="home-actions">
+                                        <a class="home-btn home-btn-primary" href="{{ $slide['primary_url'] }}">{{ $slide['primary'] }}</a>
+                                        <a class="home-btn home-btn-outline" href="{{ $slide['secondary_url'] }}">{{ $slide['secondary'] }}</a>
+                                    </div>
                                 </div>
+                                @isset($slide['tagline'])
+                                    <p class="hero-slide-tagline">{!! nl2br(e($slide['tagline'])) !!}</p>
+                                @endisset
                             </div>
                         </article>
                     @endforeach
@@ -173,9 +236,16 @@
                     <div class="home-services-grid">
                         @foreach ($copy['home_service_cards'] as $key => $service)
                             <a class="home-service-card" href="{{ $serviceLink($key) }}">
-                                <span class="home-card-icon" aria-hidden="true"><i class="fa-solid {{ $serviceIcons[$key] }}"></i></span>
-                                <h3>{{ $service['title'] }}</h3>
-                                <p>{{ $service['text'] }}</p>
+                                <span class="home-service-visual" aria-hidden="true">
+                                    <img src="{{ $serviceImages[$key] ?? '/images/services-hero.jpg' }}" alt="">
+                                    <span class="home-service-title-row">
+                                        <span>{{ $service['title'] }}</span>
+                                        <i class="fa-solid {{ $serviceIcons[$key] }}"></i>
+                                    </span>
+                                </span>
+                                <span class="home-service-body">
+                                    <span>{{ $service['text'] }}</span>
+                                </span>
                             </a>
                         @endforeach
                     </div>
@@ -191,14 +261,15 @@
                         <div class="home-industries-track">
                             @foreach ($industrySlides as $slideIndex => $industrySlide)
                                 <div class="home-industries-slide {{ $slideIndex === 0 ? 'is-active' : '' }}" data-industries-slide aria-hidden="{{ $slideIndex === 0 ? 'false' : 'true' }}">
-                                    @foreach ($industrySlide as $industryIndex => $industry)
-                                        <article class="home-industry-card">
+                                    <article class="home-industry-feature">
+                                        <div class="home-industry-label">
                                             <span class="home-industry-icon" aria-hidden="true">
-                                                <i class="fa-solid {{ $industryIcons[$industryIndex] ?? 'fa-building' }}"></i>
+                                                <i class="fa-solid {{ $industrySlide['icon'] }}"></i>
                                             </span>
-                                            <h3>{{ $industry }}</h3>
-                                        </article>
-                                    @endforeach
+                                            <h3>{{ $industrySlide['title'] }}</h3>
+                                        </div>
+                                        <img src="{{ $industrySlide['image'] }}" alt="" aria-hidden="true">
+                                    </article>
                                 </div>
                             @endforeach
                         </div>
@@ -218,69 +289,75 @@
                     </div>
                 </section>
 
-                <section class="home-split-section">
-                    <div class="home-why-block">
+                <section class="home-why-showcase" id="home-why">
+                    <div class="home-why-showcase-heading">
                         <h2>{{ $copy['home_why_title'] }}</h2>
-                        @if (! empty($copy['home_why_text']))
-                            <p>{{ $copy['home_why_text'] }}</p>
-                        @endif
-                        <ul>
-                            @foreach ($copy['home_why_items'] as $index => $item)
-                                <li>
-                                    <span class="home-why-icon" aria-hidden="true">
-                                        <i class="fa-solid {{ $whyIcons[$index] ?? 'fa-check' }}"></i>
-                                    </span>
-                                    <span>{{ $item }}</span>
-                                </li>
-                            @endforeach
-                        </ul>
+                        <p>{{ $copy['home_why_text'] }}</p>
                     </div>
 
-                    <div class="home-mission-stack">
-                        <article>
-                            <h3>{{ $copy['home_mission_title'] }}</h3>
-                            <p>{{ $copy['home_mission_text'] }}</p>
+                    <div class="home-why-showcase-layout">
+                        <article class="home-why-engagement">
+                            <img src="/images/home-why-main.png" alt="" aria-hidden="true">
+                            <div>
+                                <h3>{{ $copy['home_why_engagement_title'] }}</h3>
+                                <p>{{ $copy['home_why_engagement_text'] }}</p>
+                            </div>
                         </article>
-                        <article>
-                            <h3>{{ $copy['home_vision_title'] }}</h3>
-                            <p>{{ $copy['home_vision_text'] }}</p>
-                        </article>
-                    </div>
-                </section>
 
-                <section class="home-values-section">
-                    <h2>{{ $copy['home_values_title'] }}</h2>
-                    <div class="home-values-list">
-                        @foreach ($copy['home_values'] as $value)
-                            <span>{{ $value }}</span>
+                        <div class="home-why-mission-grid">
+                            <article>
+                                <div>
+                                    <h3>{{ $copy['home_mission_title'] }}</h3>
+                                    <p>{{ $copy['home_mission_text'] }}</p>
+                                </div>
+                                <img src="/images/home-why-mission.png" alt="" aria-hidden="true">
+                            </article>
+                            <article>
+                                <div>
+                                    <h3>{{ $copy['home_vision_title'] }}</h3>
+                                    <p>{{ $copy['home_vision_text'] }}</p>
+                                </div>
+                                <img src="/images/home-why-vision.png" alt="" aria-hidden="true">
+                            </article>
+                        </div>
+                    </div>
+
+                    <div class="home-why-card-grid">
+                        @foreach ($whyFeatureCards as $feature)
+                            <article class="home-why-feature-card">
+                                <img src="{{ $feature['image'] }}" alt="" aria-hidden="true">
+                                <div>
+                                    <h3>{{ $feature['title'] }}</h3>
+                                    <span aria-hidden="true"></span>
+                                    <p>{{ $feature['text'] }}</p>
+                                </div>
+                            </article>
                         @endforeach
                     </div>
                 </section>
 
-                <section class="home-contact-banner" aria-label="{{ $copy['home_contact_banner_label'] }}">
-                    <h2>{{ $copy['home_contact_banner_title'] }}</h2>
-                    @foreach ($copy['home_contact_banner_items'] as $index => $item)
-                        <article>
-                            <span aria-hidden="true"><i class="fa-solid {{ $contactBannerIcons[$index] ?? 'fa-check' }}"></i></span>
-                            <h3>{{ $item }}</h3>
-                        </article>
-                    @endforeach
-                </section>
-
-                <section class="home-team-section">
-                    <div>
-                        <p class="home-section-kicker">Magnum Multi Services SARL</p>
-                        <h2>{{ $copy['home_team_title'] }}</h2>
+                <section class="home-values-section">
+                    <div class="home-values-heading">
+                        <p>{{ $copy['home_values_kicker'] }}</p>
+                        <h2>{{ $copy['home_values_title'] }}</h2>
+                        <span>{{ $copy['home_values_intro'] }}</span>
                     </div>
-                    <p>{{ $copy['home_team_text'] }}</p>
-                </section>
 
-                <section class="home-cta">
-                    <div>
-                        <h2>{{ $copy['home_cta_title'] }}</h2>
-                        <p>{{ $copy['home_cta_text'] }}</p>
+                    <div class="home-values-list">
+                        @foreach ($valueCards as $value)
+                            <article class="home-value-card">
+                                <span class="home-value-image" aria-hidden="true">
+                                    <img src="{{ $value['image'] }}" alt="">
+                                </span>
+                                <span class="home-value-icon" aria-hidden="true">
+                                    <i class="fa-solid {{ $value['icon'] }}"></i>
+                                </span>
+                                <h3>{{ $value['title'] }}</h3>
+                                <p>{{ $value['text'] }}</p>
+                                <span class="home-value-line" aria-hidden="true"></span>
+                            </article>
+                        @endforeach
                     </div>
-                    <a class="home-btn home-btn-primary" href="#home-contact">{{ $copy['home_secondary_cta'] }}</a>
                 </section>
 
                 <section class="home-contact-section" id="home-contact">

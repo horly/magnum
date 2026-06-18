@@ -19,15 +19,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
-    <link href="{{ asset('css/services.css') }}?v=20260517-2" rel="stylesheet">
-    <script src="{{ asset('js/services.js') }}?v=20260517-2" defer></script>
+    <link href="{{ asset('css/services.css') }}?v=20260618-3" rel="stylesheet">
+    <script src="{{ asset('js/services.js') }}?v=20260618-3" defer></script>
 </head>
 <body id="top">
     <main class="page about-page">
         <section class="hero about-hero" style="--hero-image: url('/images/home-carousel-4.png')">
             <header class="topbar d-flex align-items-start gap-4">
                 <a class="brand flex-shrink-0" href="{{ route('home', ['lang' => $locale]) }}">
-                    <img src="/images/logo-full-ntw.png" alt="Magnum Multi Services SARL">
+                    <img src="/images/logo-full-ntwb.png" alt="Magnum Multi Services SARL">
                 </a>
 
                 <button class="menu-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" data-menu-toggle data-open-label="{{ $copy['mobile_menu'] }}" data-close-label="{{ $copy['mobile_menu_close'] }}" aria-label="{{ $copy['mobile_menu'] }}">

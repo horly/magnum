@@ -62,8 +62,10 @@ return [
         'Port Infrastructure',
         'NGOs',
     ],
-    'home_why_title' => 'WHY CHOOSE MAGNUM?',
-    'home_why_text' => '',
+    'home_why_title' => 'WHY CHOOSE MAGNUM MULTI SERVICES?',
+    'home_why_text' => 'Tailored solutions, recognized expertise, and a committed partner by your side.',
+    'home_why_engagement_title' => 'Our commitment, your performance.',
+    'home_why_engagement_text' => 'Magnum Multi Services provides reliable, tailored solutions to optimize your operations and sustainably support your growth across Central Africa.',
     'home_why_items' => [
         'Reliable and flexible solutions',
         'International supplier network',
@@ -73,11 +75,39 @@ return [
         'Professional support',
         'Solutions adapted to market needs',
     ],
-    'home_mission_title' => 'Mission',
+    'home_why_cards' => [
+        [
+            'title' => 'Reliable solutions',
+            'text' => 'Robust and proven services to guarantee continuity and quality across your operations.',
+        ],
+        [
+            'title' => 'Supplier network',
+            'text' => 'A strong and qualified network to secure your procurement and optimize your costs.',
+        ],
+        [
+            'title' => 'Multi-sector expertise',
+            'text' => 'Deep knowledge across several sectors to provide relevant and innovative solutions.',
+        ],
+        [
+            'title' => 'Personalized approach',
+            'text' => 'Tailored solutions built around your specific needs and objectives.',
+        ],
+        [
+            'title' => 'Responsiveness and flexibility',
+            'text' => 'An agile organization able to respond quickly to your requirements and market changes.',
+        ],
+        [
+            'title' => 'Professional support',
+            'text' => 'A dedicated team ready to support you at every stage of your projects.',
+        ],
+    ],
+    'home_mission_title' => 'Our mission',
     'home_mission_text' => 'To provide reliable, efficient, and competitive solutions adapted to the industrial, logistics, and commercial needs of our partners.',
-    'home_vision_title' => 'Vision',
+    'home_vision_title' => 'Our vision',
     'home_vision_text' => 'To become a strategic reference partner for logistics, industrial, and supply chain solutions in Central Africa.',
-    'home_values_title' => 'Values',
+    'home_values_kicker' => 'OUR VALUES',
+    'home_values_title' => 'Our values, our commitment',
+    'home_values_intro' => 'Our values guide every action we take. They reflect the way we work and our commitment to our partners.',
     'home_values' => [
         'Excellence',
         'Reliability',
@@ -86,6 +116,28 @@ return [
         'Responsiveness',
         'Customer satisfaction',
     ],
+    'home_value_cards' => [
+        [
+            'title' => 'Integrity',
+            'text' => 'We act with honesty, transparency, and responsibility in every relationship.',
+        ],
+        [
+            'title' => 'Reliability',
+            'text' => 'We honor our commitments and build lasting relationships based on trust.',
+        ],
+        [
+            'title' => 'Excellence',
+            'text' => 'We pursue excellence in our solutions and services to create added value.',
+        ],
+        [
+            'title' => 'Team spirit',
+            'text' => 'We believe in the strength of collaboration and collective work.',
+        ],
+        [
+            'title' => 'Responsibility',
+            'text' => 'We are committed to positive and lasting impact in every project.',
+        ],
+    ],
     'home_team_title' => 'Our Team',
     'home_team_text' => 'Our team is organized to provide responsive, reliable and result-driven support across logistics, sourcing, supply chain management and business development operations.',
     'home_cta_title' => 'Do you have a logistics, industrial, or commercial need?',
@@ -93,8 +145,9 @@ return [
     'home_carousel_slides' => [
         [
             'eyebrow' => 'MAGNUM MULTI SERVICES',
-            'title' => "CONNECTING INDUSTRIES.\nDELIVERING SOLUTIONS.",
-            'subtitle' => 'Logistics, Industrial & Supply Chain Solutions',
+            'title' => "LOGISTICS,\nINDUSTRIAL & SUPPLY CHAIN SOLUTIONS",
+            'tagline' => "Connecting industries.\nDelivering solutions.",
+            'layout' => 'proposal',
             'description' => [
                 'Magnum Multi Services supports companies, industries, and organizations with reliable solutions adapted to operational, logistics, industrial, and commercial needs.',
                 'Through our multisector expertise and our network of partners and suppliers, we provide flexible, efficient, and results-driven solutions.',

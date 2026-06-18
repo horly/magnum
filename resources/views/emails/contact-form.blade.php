@@ -10,7 +10,7 @@
             <td align="center">
                 <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width: 680px; background: #ffffff; border: 1px solid #e0e5f2;">
                     <tr>
-                        <td style="padding: 24px; background: #06186b; color: #ffffff;">
+                        <td style="padding: 24px; background: #001e42; color: #ffffff;">
                             <h1 style="margin: 0; font-size: 24px;">Nouvelle demande de contact</h1>
                             <p style="margin: 8px 0 0;">Formulaire du site Magnum Multi Services</p>
                         </td>
@@ -23,8 +23,8 @@
                             <p><strong>Entreprise :</strong> {{ $contact['company'] ?: 'Non renseignée' }}</p>
                             <p><strong>Service demandé :</strong> {{ $contact['requested_service'] }}</p>
 
-                            <h2 style="margin: 24px 0 10px; color: #06186b; font-size: 18px;">Message</h2>
-                            <div style="padding: 16px; background: #f8f9fd; border-left: 4px solid #ec0044; white-space: pre-line;">{{ $contact['message'] }}</div>
+                            <h2 style="margin: 24px 0 10px; color: #001e42; font-size: 18px;">Message</h2>
+                            <div style="padding: 16px; background: #f8f9fd; border-left: 4px solid #d0003c; white-space: pre-line;">{{ $contact['message'] }}</div>
                         </td>
                     </tr>
                 </table>

@@ -934,3 +934,122 @@ public/images/schedules-planning-warehouse.png
 
 - Remplacement de l'ancien numero `+243 990 347 544` par `+243 823 234 444` dans les vues publiques.
 - Verification qu'il ne reste plus d'occurrence de l'ancien numero dans le projet.
+
+## 82. Corrections client page d'accueil
+
+- Remplacement du logo header Home par `logo-full-w.png` pour afficher le nom Magnum en blanc.
+- Reduction de la hauteur du hero/carrousel d'accueil afin de diminuer l'espace bas de l'image.
+- Ajustement des espacements du contenu hero et des indicateurs du carrousel.
+- Mise a jour de la version CSS Home vers `20260617-1`.
+
+## 83. Ajustement logo fourni et espace hero
+
+- Ajout du logo fourni par le client dans `public/images/logo-full-ntwb.png`.
+- Remplacement du logo header Home par le fichier client `logo-full-ntwb.png`.
+- Augmentation legere de l'espace du hero par rapport a la correction precedente.
+- Mise a jour de la version CSS Home vers `20260617-2`.
+
+## 84. Reduction legere des textes du hero Home
+
+- Reduction de la taille du titre principal du carrousel Home.
+- Reduction legere du sous-titre et des descriptions du hero.
+- Ajustement des tailles responsive tablette/mobile.
+- Mise a jour de la version CSS Home vers `20260617-3`.
+
+## 85. Reduction supplementaire du titre hero Home
+
+- Nouvelle reduction du titre principal du hero Home, avec largeur de ligne ajustee.
+- Ajustement des tailles responsive du titre sur tablette et mobile.
+- Mise a jour de la version CSS Home vers `20260617-4`.
+
+## 86. Ajout de la proposition client au hero Home
+
+- Transformation de la premiere slide du carrousel Home en variante inspiree de la proposition client.
+- Utilisation de l'image portuaire `home-carousel-3.png` pour la premiere slide.
+- Nouveau titre `Solutions logistiques, industrielles & supply chain`.
+- Ajout d'une accroche a droite : `Connecter les industries. Fournir des solutions.`
+- Ajout d'un style dedie `.hero-slide-proposal` avec contenu bas gauche et accroche bas droite.
+- Ajout des traductions anglaises equivalentes.
+- Mise a jour de la version CSS Home vers `20260617-5`.
+
+## 87. Image client pour la proposition Home
+
+- Ajout de l'image client dans `public/images/home-proposal-ship.png`.
+- Remplacement du fond de la premiere slide proposition par cette image.
+- Ajustement de la position de l'image pour garder le bateau centre.
+- Mise a jour de la version CSS Home vers `20260617-6`.
+
+## 88. Harmonisation du logo navbar
+
+- Application du logo navbar Home `logo-full-ntwb.png` sur toutes les pages internes.
+- Conservation du logo footer existant.
+- Verification que les navbars utilisent toutes le meme logo.
+
+## 89. Cards visuelles des domaines d'expertise Home
+
+- Remplacement des cards Home uniquement basees sur des icones par des cards avec image, titre, icone et description.
+- Ajout d'une correspondance image par domaine d'expertise dans `home.blade.php`.
+- Refonte CSS des cards avec image en haut, overlay bleu et titre en blanc.
+- Ajustement responsive des nouvelles cards.
+- Mise a jour de la version CSS Home vers `20260617-7`.
+
+## 90. Images client pour les domaines d'expertise Home
+
+- Ajout des cinq images client dans `public/images` avec des noms dedies aux cards Home.
+- Association des images aux domaines : sourcing, logistique, OEM, commerce B2B et conseil.
+- Mise a jour de la version CSS Home vers `20260617-8`.
+
+## 91. Refonte visuelle des secteurs d'activite Home
+
+- Ajout des onze images client dediees aux secteurs d'activite Home.
+- Remplacement du carousel de petites cards icones par un carousel de panneaux visuels.
+- Nouveau layout secteur : bloc rose avec icone et nom du secteur, image du secteur a droite.
+- Association des images aux secteurs : mines, construction, industrie, energie, agriculture, sante, logistique, infrastructures, maritime/fluvial, portuaire et ONG.
+- Ajustement responsive du carousel secteurs.
+- Mise a jour de la version CSS Home vers `20260617-9`.
+
+## 92. Refonte visuelle de la section Pourquoi choisir Magnum Home
+
+- Ajout des neuf images client dediees a la section `Pourquoi choisir Magnum Multi Services`.
+- Remplacement de l'ancien bloc icones/mission/vision par une composition visuelle :
+  grand visuel d'engagement, deux cards mission/vision avec images, puis six cards d'atouts avec images.
+- Ajout des textes FR/EN dedies a la nouvelle section Home.
+- Ajustement responsive de la section sur desktop intermediaire, tablette et mobile.
+- Mise a jour de la version CSS Home vers `20260617-10`.
+
+## 93. Suppression du bandeau Nos forces Home
+
+- Retrait de la section `Nos forces` situee entre les valeurs et la section `Notre equipe`.
+- Suppression de la variable d'icones devenue inutile dans la vue Home.
+
+## 94. Suppression de la section Notre equipe Home
+
+- Retrait de la section `Notre equipe` situee entre les valeurs et l'appel a l'action Home.
+- Conservation de l'appel a l'action et du formulaire de contact dans le flux de la page.
+
+## 95. Refonte visuelle de la section Valeurs Home
+
+- Ajout des cinq images client dediees aux valeurs Home.
+- Remplacement de l'ancien bandeau de tags `Valeurs` par une section visuelle avec titre, texte introductif et cinq cards.
+- Association des valeurs : Integrite, Fiabilite, Excellence, Esprit d'equipe et Responsabilite.
+- Ajout des textes FR/EN dedies a la nouvelle section.
+- Ajustement responsive desktop, tablette et mobile.
+- Mise a jour de la version CSS Home vers `20260618-1`.
+
+## 96. Suppression du CTA bleu avant contact Home
+
+- Retrait du bloc d'appel a l'action bleu situe entre la section Valeurs et le formulaire de contact.
+- Le formulaire de contact suit maintenant directement la section Valeurs.
+
+## 97. Mise a jour des couleurs du theme
+
+- Remplacement de la couleur rose principale par `#d0003c`.
+- Remplacement de la couleur bleue principale par `#001e42`.
+- Harmonisation des variantes RGBA utilisees dans le CSS principal.
+- Mise a jour des couleurs du template email de contact.
+- Alignement du cache-busting CSS des pages publiques sur `20260618-2`.
+
+## 98. Reduction de l'opacite de la carte de fond
+
+- Diminution de l'opacite de la carte de fond `world-map-real.svg` sur les sections publiques.
+- Passage du cache-busting des assets publics en `20260618-3`.

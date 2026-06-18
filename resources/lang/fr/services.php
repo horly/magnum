@@ -62,8 +62,10 @@ return [
         'Infrastructures portuaires',
         'ONG',
     ],
-    'home_why_title' => 'POURQUOI CHOISIR MAGNUM ?',
-    'home_why_text' => '',
+    'home_why_title' => 'POURQUOI CHOISIR MAGNUM MULTI SERVICES ?',
+    'home_why_text' => 'Des solutions sur mesure, une expertise reconnue, un partenaire engagé à vos côtés.',
+    'home_why_engagement_title' => 'Notre engagement, votre performance.',
+    'home_why_engagement_text' => 'Magnum Multi Services vous apporte des solutions fiables et adaptées pour optimiser vos opérations et soutenir durablement votre croissance en Afrique centrale.',
     'home_why_items' => [
         'Solutions fiables et flexibles',
         'Réseau international de fournisseurs',
@@ -73,11 +75,39 @@ return [
         'Accompagnement professionnel',
         'Solutions adaptées aux besoins du marché',
     ],
-    'home_mission_title' => 'Mission',
+    'home_why_cards' => [
+        [
+            'title' => 'Solutions fiables',
+            'text' => 'Des services robustes et éprouvés pour garantir la continuité et la qualité de vos opérations.',
+        ],
+        [
+            'title' => 'Réseau de fournisseurs',
+            'text' => 'Un réseau solide et qualifié pour sécuriser vos approvisionnements et optimiser vos coûts.',
+        ],
+        [
+            'title' => 'Expertise multisectorielle',
+            'text' => 'Une connaissance approfondie de plusieurs secteurs pour apporter des solutions pertinentes et innovantes.',
+        ],
+        [
+            'title' => 'Approche personnalisée',
+            'text' => 'Des solutions sur mesure construites autour de vos besoins spécifiques et de vos objectifs.',
+        ],
+        [
+            'title' => 'Réactivité et flexibilité',
+            'text' => 'Une organisation agile pour répondre rapidement à vos exigences et aux évolutions du marché.',
+        ],
+        [
+            'title' => 'Soutien professionnel',
+            'text' => 'Une équipe dédiée à votre écoute pour vous accompagner à chaque étape de vos projets.',
+        ],
+    ],
+    'home_mission_title' => 'Notre mission',
     'home_mission_text' => 'Offrir des solutions fiables, efficaces et compétitives adaptées aux besoins industriels, logistiques et commerciaux de nos partenaires.',
-    'home_vision_title' => 'Vision',
+    'home_vision_title' => 'Notre vision',
     'home_vision_text' => 'Devenir un partenaire stratégique de référence dans les solutions logistiques, industrielles et supply chain en Afrique centrale.',
-    'home_values_title' => 'Valeurs',
+    'home_values_kicker' => 'NOS VALEURS',
+    'home_values_title' => 'Nos valeurs, notre engagement',
+    'home_values_intro' => 'Nos valeurs guident chacune de nos actions. Elles reflètent notre façon de travailler et notre engagement envers nos partenaires.',
     'home_values' => [
         'Excellence',
         'Fiabilité',
@@ -86,6 +116,28 @@ return [
         'Réactivité',
         'Satisfaction client',
     ],
+    'home_value_cards' => [
+        [
+            'title' => 'Intégrité',
+            'text' => 'Nous agissons avec honnêteté, transparence et responsabilité dans toutes nos relations.',
+        ],
+        [
+            'title' => 'Fiabilité',
+            'text' => 'Nous tenons nos engagements et bâtissons des relations de confiance durables.',
+        ],
+        [
+            'title' => 'Excellence',
+            'text' => 'Nous visons l’excellence dans nos solutions et services pour créer de la valeur ajoutée.',
+        ],
+        [
+            'title' => 'Esprit d’équipe',
+            'text' => 'Nous croyons en la force de la collaboration et du travail collectif.',
+        ],
+        [
+            'title' => 'Responsabilité',
+            'text' => 'Nous nous engageons pour un impact positif et durable dans chaque projet.',
+        ],
+    ],
     'home_team_title' => 'Notre équipe',
     'home_team_text' => 'Notre équipe est organisée pour fournir un accompagnement réactif, fiable et orienté résultats dans les opérations logistiques, le sourcing, la gestion de la supply chain et le développement commercial.',
     'home_cta_title' => 'Vous avez un besoin logistique, industriel ou commercial ?',
@@ -93,8 +145,9 @@ return [
     'home_carousel_slides' => [
         [
             'eyebrow' => 'MAGNUM MULTI SERVICES',
-            'title' => "CONNECTER LES INDUSTRIES.\nFOURNIR DES SOLUTIONS.",
-            'subtitle' => 'Solutions Logistiques, Industrielles & Supply Chain',
+            'title' => "SOLUTIONS LOGISTIQUES,\nINDUSTRIELLES & SUPPLY CHAIN",
+            'tagline' => "Connecter les industries.\nFournir des solutions.",
+            'layout' => 'proposal',
             'description' => [
                 'Magnum Multi Services accompagne les entreprises, industries et organisations avec des solutions fiables adaptées aux besoins opérationnels, logistiques, industriels et commerciaux.',
                 'Grâce à notre expertise multisectorielle et à notre réseau de partenaires et fournisseurs, nous proposons des solutions flexibles, efficaces et orientées résultats.',
