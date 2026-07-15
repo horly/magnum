@@ -6285,3 +6285,147 @@
         border-bottom: 0;
     }
 }
+/* About services dropdown repair - 2026-07-15 */
+.nav-service-menu .nav-service-link,
+.nav-service-menu .nav-service-toggle {
+    display: none !important;
+}
+
+.nav-service-menu .nav-service-trigger {
+    display: inline-flex !important;
+    position: relative;
+    z-index: 80;
+}
+
+.nav-service-menu:hover .nav-service-dropdown,
+.nav-service-menu.is-open .nav-service-dropdown,
+.nav-service-menu:focus-within .nav-service-dropdown {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+.about-page .topbar {
+    z-index: 80;
+}
+
+.about-page .main-nav,
+.about-page .nav-service-menu {
+    z-index: 90;
+}
+
+.about-page .nav-service-dropdown {
+    z-index: 120;
+}
+
+@media (max-width: 991.98px) {
+    .nav-service-menu .nav-service-trigger {
+        justify-content: center;
+        width: 100%;
+        min-height: 52px;
+        padding: 0 8px;
+        text-align: center;
+    }
+
+    .nav-service-menu:hover .nav-service-dropdown {
+        max-height: 0;
+        padding: 0 18px;
+    }
+
+    .nav-service-menu.is-open .nav-service-dropdown,
+    .nav-service-menu:focus-within .nav-service-dropdown {
+        max-height: 420px;
+        padding: 18px;
+    }
+}
+/* About dropdown visibility hardening - 2026-07-15 */
+.about-page .hero {
+    overflow: visible;
+}
+
+.about-page .topbar {
+    position: relative;
+    z-index: 1000;
+}
+
+.about-page .main-nav {
+    position: relative;
+    z-index: 1001;
+}
+
+.about-page .nav-service-menu {
+    position: relative;
+    z-index: 1002;
+}
+
+.about-page .nav-service-trigger {
+    display: inline-flex !important;
+    pointer-events: auto;
+}
+
+.about-page .nav-service-dropdown {
+    top: calc(100% + 1px);
+    z-index: 1003;
+    background: rgba(0, 30, 66, .92);
+    backdrop-filter: blur(10px);
+}
+
+.about-page .nav-service-menu:hover .nav-service-dropdown,
+.about-page .nav-service-menu.is-open .nav-service-dropdown,
+.about-page .nav-service-menu:focus-within .nav-service-dropdown {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+.about-page .about-hero::before,
+.about-page .about-hero::after {
+    pointer-events: none;
+}
+/* Services click only dropdown - 2026-07-15 */
+.nav-service-menu:not(.is-open):hover .nav-service-dropdown,
+.nav-service-menu:not(.is-open):focus-within .nav-service-dropdown,
+.about-page .nav-service-menu:not(.is-open):hover .nav-service-dropdown,
+.about-page .nav-service-menu:not(.is-open):focus-within .nav-service-dropdown {
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translateX(-50%) translateY(12px) !important;
+}
+
+.nav-service-menu:hover .nav-service-trigger i,
+.nav-service-menu:focus-within .nav-service-trigger i,
+.about-page .nav-service-menu:hover .nav-service-trigger i,
+.about-page .nav-service-menu:focus-within .nav-service-trigger i {
+    transform: none !important;
+}
+
+.nav-service-menu.is-open .nav-service-trigger i,
+.about-page .nav-service-menu.is-open .nav-service-trigger i {
+    transform: rotate(180deg) !important;
+}
+
+.nav-service-menu.is-open .nav-service-dropdown,
+.about-page .nav-service-menu.is-open .nav-service-dropdown {
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: translateX(-50%) translateY(0) !important;
+}
+
+@media (max-width: 991.98px) {
+    .nav-service-menu:not(.is-open):hover .nav-service-dropdown,
+    .nav-service-menu:not(.is-open):focus-within .nav-service-dropdown,
+    .about-page .nav-service-menu:not(.is-open):hover .nav-service-dropdown,
+    .about-page .nav-service-menu:not(.is-open):focus-within .nav-service-dropdown {
+        max-height: 0 !important;
+        padding: 0 18px !important;
+    }
+
+    .nav-service-menu.is-open .nav-service-dropdown,
+    .about-page .nav-service-menu.is-open .nav-service-dropdown {
+        max-height: 420px !important;
+        padding: 18px !important;
+    }
+}
