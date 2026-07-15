@@ -19,12 +19,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
-    <link href="{{ asset('css/services.css') }}?v=20260618-3" rel="stylesheet">
-    <script src="{{ asset('js/services.js') }}?v=20260618-3" defer></script>
+    <link href="{{ asset('css/services.css') }}?v=20260715-5" rel="stylesheet">
+    <script src="{{ asset('js/services.js') }}?v=20260715-2" defer></script>
 </head>
 <body id="top">
     <main class="page about-page">
-        <section class="hero about-hero" style="--hero-image: url('/images/home-carousel-4.png')">
+        <section class="hero about-hero" style="--hero-image: url('/images/about-hero-team.png')">
             <header class="topbar d-flex align-items-start gap-4">
                 <a class="brand flex-shrink-0" href="{{ route('home', ['lang' => $locale]) }}">
                     <img src="/images/logo-full-ntwb.png" alt="Magnum Multi Services SARL">
@@ -34,22 +34,7 @@
                     <i class="fa-solid fa-bars open-icon" aria-hidden="true"></i>
                     <i class="fa-solid fa-xmark close-icon" aria-hidden="true"></i>
                 </button>
-
-                <nav class="main-nav" id="primary-navigation" aria-label="Primary navigation">
-                    <a href="{{ route('home', ['lang' => $locale]) }}">{{ $copy['nav_home'] }}</a>
-                    <a class="active" href="{{ route('about', ['lang' => $locale]) }}">{{ $copy['nav_about'] }}</a>
-                    <a href="{{ route('services', ['lang' => $locale]) }}">{{ $copy['nav_services'] }}</a>
-                    <a href="{{ route('sectors', ['lang' => $locale]) }}">{{ $copy['nav_industrial'] }}</a>
-                    <a href="{{ route('ssl-schedules', ['lang' => $locale]) }}">{{ $copy['nav_ssl'] }}</a>
-                    <a href="{{ route('sites', ['lang' => $locale]) }}">{{ $copy['nav_locations'] }}</a>
-                    <a href="{{ route('privacy-policy', ['lang' => $locale]) }}">{{ $copy['footer_privacy'] }}</a>
-
-                    <span class="language-switch" aria-label="Languages">
-                        <a href="{{ $langLink('fr') }}" aria-label="Afficher le site en francais">Fr</a>
-                        <a class="lang-toggle" href="{{ $langLink($isFr ? 'en' : 'fr') }}" role="switch" aria-checked="{{ $isFr ? 'false' : 'true' }}" aria-label="{{ $isFr ? 'Passer en anglais' : 'Switch to French' }}"></a>
-                        <a href="{{ $langLink('en') }}" aria-label="Display site in English">En</a>
-                    </span>
-                </nav>
+                @include('partials.main-nav', ['activePage' => 'about'])
             </header>
 
             <div class="hero-copy about-hero-copy">
@@ -60,36 +45,38 @@
 
         <section class="about-main">
             <div class="container about-container">
-                <section class="about-intro-section">
+                <section class="about-intro-section about-intro-card">
                     <div class="about-intro-copy">
-                        <p class="home-section-kicker">{{ $copy['about_intro_kicker'] }}</p>
                         <h2>{{ $copy['about_intro_title'] }}</h2>
-                        @foreach ($copy['about_intro_text'] as $paragraph)
-                            <p>{{ $paragraph }}</p>
-                        @endforeach
-                        <div class="about-address">
+                        <div class="about-intro-text">
+                            @foreach ($copy['about_intro_text'] as $paragraph)
+                                <p>{{ $paragraph }}</p>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="about-intro-summary">
+                        <div class="about-summary-line">
                             <span class="about-address-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span>
                             <span>{{ $copy['about_intro_address'] }}</span>
                         </div>
                         <a class="home-btn home-btn-primary" href="{{ $homeContactLink }}">{{ $copy['about_intro_button'] }}</a>
                     </div>
-                    <div class="about-intro-image" role="img" aria-label="Magnum Multi Services logistics and industrial support"></div>
                 </section>
 
-                <section class="about-section">
-                    <div class="about-section-heading compact">
-                        <h2>{{ $copy['about_mvv_title'] }}</h2>
-                    </div>
+                <section class="about-section about-pillars-section" aria-label="{{ $copy['about_mvv_title'] }}">
                     <div class="about-mvv-grid">
                         <article class="about-feature-card">
+                            <span class="about-card-icon" aria-hidden="true"><i class="fa-solid fa-bullseye"></i></span>
                             <h3>{{ $copy['about_mission_title'] }}</h3>
                             <p>{{ $copy['about_mission_text'] }}</p>
                         </article>
                         <article class="about-feature-card">
+                            <span class="about-card-icon" aria-hidden="true"><i class="fa-solid fa-route"></i></span>
                             <h3>{{ $copy['about_vision_title'] }}</h3>
                             <p>{{ $copy['about_vision_text'] }}</p>
                         </article>
                         <article class="about-feature-card about-values-card">
+                            <span class="about-card-icon" aria-hidden="true"><i class="fa-solid fa-gem"></i></span>
                             <h3>{{ $copy['about_values_title'] }}</h3>
                             <div class="about-values-list">
                                 @foreach ($copy['about_values'] as $value)
@@ -118,28 +105,12 @@
                     </div>
                 </section>
 
-                <section class="about-section">
-                    <div class="about-section-heading">
-                        <h2>{{ $copy['about_commitments_title'] }}</h2>
-                    </div>
-                    <div class="about-commitment-grid">
-                        @foreach ($copy['about_commitments'] as $commitment)
-                            <article class="about-commitment-card">
-                                <span aria-hidden="true"><i class="fa-solid {{ $commitment['icon'] }}"></i></span>
-                                <h3>{{ $commitment['title'] }}</h3>
-                                <p>{{ $commitment['text'] }}</p>
-                            </article>
-                        @endforeach
-                    </div>
-                </section>
-
-                <section class="about-team-section">
-                    <div class="about-team-image" role="img" aria-label="Professional Magnum Multi Services team"></div>
+                <section class="about-team-section about-team-band">
+                    <div class="about-team-visual" role="img" aria-label="Magnum Multi Services operations team"></div>
                     <div class="about-team-copy">
-                        <p class="home-section-kicker">Magnum Multi Services SARL</p>
                         <h2>{{ $copy['about_team_title'] }}</h2>
                         <p>{{ $copy['about_team_text'] }}</p>
-                        <blockquote>{{ $copy['about_team_quote'] }}</blockquote>
+                        <p>{{ $copy['about_team_quote'] }}</p>
                     </div>
                 </section>
 

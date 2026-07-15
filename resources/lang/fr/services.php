@@ -13,8 +13,8 @@ return [
     'mobile_menu' => 'Ouvrir le menu',
     'mobile_menu_close' => 'Fermer le menu',
     'home_hero_title' => 'Solutions logistiques, industrielles et supply chain',
-    'home_hero_subtitle' => 'Un accompagnement opérationnel fiable pour les entreprises, industries et organisations en Afrique centrale.',
-    'home_hero_text' => 'Magnum Multi Services fournit des solutions fiables en sourcing, logistique, commerce B2B, représentation OEM, consulting et supply chain pour les entreprises qui recherchent un support opérationnel réactif et une exécution maîtrisée.',
+    'home_hero_subtitle' => 'Solutions fiables pour les besoins logistiques, industriels et commerciaux.',
+    'home_hero_text' => 'Magnum Multi Services accompagne les entreprises, industries et organisations avec des solutions fiables, flexibles et orientées résultats.',
     'home_primary_cta' => 'Découvrir nos services',
     'home_secondary_cta' => 'Contactez-nous',
     'home_about_eyebrow' => 'À propos de Magnum Multi Services',
@@ -62,8 +62,8 @@ return [
         'Infrastructures portuaires',
         'ONG',
     ],
-    'home_why_title' => 'POURQUOI CHOISIR MAGNUM MULTI SERVICES ?',
-    'home_why_text' => 'Des solutions sur mesure, une expertise reconnue, un partenaire engagé à vos côtés.',
+    'home_why_title' => 'POURQUOI CHOISIR MAGNUM ?',
+    'home_why_text' => 'Une sélection claire de nos atouts pour comprendre rapidement notre valeur opérationnelle.',
     'home_why_engagement_title' => 'Notre engagement, votre performance.',
     'home_why_engagement_text' => 'Magnum Multi Services vous apporte des solutions fiables et adaptées pour optimiser vos opérations et soutenir durablement votre croissance en Afrique centrale.',
     'home_why_items' => [
@@ -179,8 +179,8 @@ return [
     ],
     'home_contact_title' => 'Nous contacter',
     'home_contact_text' => 'Travaillons ensemble pour fournir des solutions fiables et de haute qualité, adaptées aux besoins de votre entreprise.',
-    'home_contact_banner_label' => 'Points forts avant contact',
-    'home_contact_banner_title' => 'Nos forces',
+    'home_contact_banner_label' => 'Nos forces',
+    'home_contact_banner_title' => 'Des appuis concrets pour vos opérations',
     'home_contact_banner_items' => [
         'Approvisionnement fiable',
         'Coordination logistique',
@@ -861,3 +861,4 @@ return [
     'footer_copyright' => 'Magnum Multi-Services Sarl',
     'back_to_top' => 'Retour en haut',
 ];
+

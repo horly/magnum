@@ -70,6 +70,48 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 });
             }
+            // Client services dropdown - 2026-07-15
+            document.querySelectorAll('[data-service-menu]').forEach((serviceMenu) => {
+                const trigger = serviceMenu.querySelector('[data-service-trigger]');
+
+                if (! trigger) {
+                    return;
+                }
+
+                const closeMenu = () => {
+                    serviceMenu.classList.remove('is-open');
+                    trigger.setAttribute('aria-expanded', 'false');
+                };
+
+                trigger.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const nextState = ! serviceMenu.classList.contains('is-open');
+
+                    document.querySelectorAll('[data-service-menu].is-open').forEach((openMenu) => {
+                        if (openMenu !== serviceMenu) {
+                            openMenu.classList.remove('is-open');
+                            openMenu.querySelector('[data-service-trigger]')?.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+
+                    serviceMenu.classList.toggle('is-open', nextState);
+                    trigger.setAttribute('aria-expanded', nextState ? 'true' : 'false');
+                });
+
+                serviceMenu.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+
+                document.addEventListener('click', (event) => {
+                    if (! serviceMenu.contains(event.target)) {
+                        closeMenu();
+                    }
+                });
+
+                document.addEventListener('keydown', (event) => {
+                    if (event.key === 'Escape') {
+                        closeMenu();
+                    }
+                });
+            });
 
             animatedLinks.forEach((link) => {
                 link.addEventListener('click', (event) => {

@@ -41,43 +41,15 @@
         'fa-briefcase',
         'fa-chart-line',
     ];
-    $whyFeatureImages = [
-        '/images/home-why-reliable.png',
-        '/images/home-why-network.png',
-        '/images/home-why-expertise.png',
-        '/images/home-why-personalized.png',
-        '/images/home-why-reactive.png',
-        '/images/home-why-support.png',
+    $strengthIcons = [
+        'fa-boxes-packing',
+        'fa-route',
+        'fa-handshake',
+        'fa-headset',
+        'fa-network-wired',
+        'fa-sliders',
+        'fa-compass',
     ];
-    $whyFeatureCards = array_map(
-        fn ($item, $index) => array_merge($item, [
-            'image' => $whyFeatureImages[$index] ?? '/images/home-why-main.png',
-        ]),
-        array_values($copy['home_why_cards'] ?? []),
-        array_keys(array_values($copy['home_why_cards'] ?? []))
-    );
-    $valueImages = [
-        '/images/home-value-integrity.png',
-        '/images/home-value-reliability.png',
-        '/images/home-value-excellence.png',
-        '/images/home-value-teamwork.png',
-        '/images/home-value-responsibility.png',
-    ];
-    $valueIcons = [
-        'fa-shield-halved',
-        'fa-bullseye',
-        'fa-lightbulb',
-        'fa-users',
-        'fa-leaf',
-    ];
-    $valueCards = array_map(
-        fn ($item, $index) => array_merge($item, [
-            'image' => $valueImages[$index] ?? '/images/home-value-integrity.png',
-            'icon' => $valueIcons[$index] ?? 'fa-check',
-        ]),
-        array_values($copy['home_value_cards'] ?? []),
-        array_keys(array_values($copy['home_value_cards'] ?? []))
-    );
     $industryImages = [
         '/images/home-sector-mines.png',
         '/images/home-sector-construction.png',
@@ -139,8 +111,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
-    <link href="{{ asset('css/services.css') }}?v=20260618-3" rel="stylesheet">
-    <script src="{{ asset('js/services.js') }}?v=20260608-1" defer></script>
+    <link href="{{ asset('css/services.css') }}?v=20260715-3" rel="stylesheet">
+    <script src="{{ asset('js/services.js') }}?v=20260715-2" defer></script>
 </head>
 <body id="top">
     <main class="page home-page">
@@ -154,22 +126,7 @@
                     <i class="fa-solid fa-bars open-icon" aria-hidden="true"></i>
                     <i class="fa-solid fa-xmark close-icon" aria-hidden="true"></i>
                 </button>
-
-                <nav class="main-nav" id="primary-navigation" aria-label="Primary navigation">
-                    <a class="active" href="{{ route('home', ['lang' => $locale]) }}">{{ $copy['nav_home'] }}</a>
-                    <a href="{{ route('about', ['lang' => $locale]) }}">{{ $copy['nav_about'] }}</a>
-                    <a href="{{ route('services', ['lang' => $locale]) }}">{{ $copy['nav_services'] }}</a>
-                    <a href="{{ route('sectors', ['lang' => $locale]) }}">{{ $copy['nav_industrial'] }}</a>
-                    <a href="{{ route('ssl-schedules', ['lang' => $locale]) }}">{{ $copy['nav_ssl'] }}</a>
-                    <a href="{{ route('sites', ['lang' => $locale]) }}">{{ $copy['nav_locations'] }}</a>
-                    <a href="{{ route('privacy-policy', ['lang' => $locale]) }}">{{ $copy['footer_privacy'] }}</a>
-
-                    <span class="language-switch" aria-label="Languages">
-                        <a href="{{ $langLink('fr') }}" aria-label="Afficher le site en francais">Fr</a>
-                        <a class="lang-toggle" href="{{ $langLink($isFr ? 'en' : 'fr') }}" role="switch" aria-checked="{{ $isFr ? 'false' : 'true' }}" aria-label="{{ $isFr ? 'Passer en anglais' : 'Switch to French' }}"></a>
-                        <a href="{{ $langLink('en') }}" aria-label="Display site in English">En</a>
-                    </span>
-                </nav>
+                @include('partials.main-nav', ['activePage' => 'home'])
             </header>
 
             <div class="hero-carousel" data-hero-carousel data-interval="10000" aria-label="Magnum Multi Services highlights">
@@ -219,13 +176,6 @@
 
         <section class="home-main">
             <div class="container home-container">
-                <section class="home-about-row" id="home-about">
-                    <div>
-                        <p class="home-section-kicker">{{ $copy['home_about_eyebrow'] }}</p>
-                        <h2>{{ $copy['home_about_title'] }}</h2>
-                    </div>
-                    <p>{{ $copy['home_about_text'] }}</p>
-                </section>
 
                 <section class="home-section">
                     <div class="home-section-heading">
@@ -288,78 +238,36 @@
                         </div>
                     </div>
                 </section>
-
                 <section class="home-why-showcase" id="home-why">
                     <div class="home-why-showcase-heading">
                         <h2>{{ $copy['home_why_title'] }}</h2>
                         <p>{{ $copy['home_why_text'] }}</p>
                     </div>
 
-                    <div class="home-why-showcase-layout">
-                        <article class="home-why-engagement">
-                            <img src="/images/home-why-main.png" alt="" aria-hidden="true">
-                            <div>
-                                <h3>{{ $copy['home_why_engagement_title'] }}</h3>
-                                <p>{{ $copy['home_why_engagement_text'] }}</p>
-                            </div>
-                        </article>
-
-                        <div class="home-why-mission-grid">
-                            <article>
-                                <div>
-                                    <h3>{{ $copy['home_mission_title'] }}</h3>
-                                    <p>{{ $copy['home_mission_text'] }}</p>
-                                </div>
-                                <img src="/images/home-why-mission.png" alt="" aria-hidden="true">
-                            </article>
-                            <article>
-                                <div>
-                                    <h3>{{ $copy['home_vision_title'] }}</h3>
-                                    <p>{{ $copy['home_vision_text'] }}</p>
-                                </div>
-                                <img src="/images/home-why-vision.png" alt="" aria-hidden="true">
-                            </article>
-                        </div>
-                    </div>
-
-                    <div class="home-why-card-grid">
-                        @foreach ($whyFeatureCards as $feature)
-                            <article class="home-why-feature-card">
-                                <img src="{{ $feature['image'] }}" alt="" aria-hidden="true">
-                                <div>
-                                    <h3>{{ $feature['title'] }}</h3>
-                                    <span aria-hidden="true"></span>
-                                    <p>{{ $feature['text'] }}</p>
-                                </div>
+                    <div class="home-why-compact-grid">
+                        @foreach ($copy['home_why_items'] as $index => $item)
+                            <article class="home-why-compact-card">
+                                <span aria-hidden="true"><i class="fa-solid {{ $whyIcons[$index] ?? 'fa-check' }}"></i></span>
+                                <h3>{{ $item }}</h3>
                             </article>
                         @endforeach
                     </div>
                 </section>
 
-                <section class="home-values-section">
-                    <div class="home-values-heading">
-                        <p>{{ $copy['home_values_kicker'] }}</p>
-                        <h2>{{ $copy['home_values_title'] }}</h2>
-                        <span>{{ $copy['home_values_intro'] }}</span>
+                <section class="home-strengths-band" aria-labelledby="home-strengths-title">
+                    <div>
+                        <p class="home-section-kicker">{{ $copy['home_contact_banner_label'] }}</p>
+                        <h2 id="home-strengths-title">{{ $copy['home_contact_banner_title'] }}</h2>
                     </div>
-
-                    <div class="home-values-list">
-                        @foreach ($valueCards as $value)
-                            <article class="home-value-card">
-                                <span class="home-value-image" aria-hidden="true">
-                                    <img src="{{ $value['image'] }}" alt="">
-                                </span>
-                                <span class="home-value-icon" aria-hidden="true">
-                                    <i class="fa-solid {{ $value['icon'] }}"></i>
-                                </span>
-                                <h3>{{ $value['title'] }}</h3>
-                                <p>{{ $value['text'] }}</p>
-                                <span class="home-value-line" aria-hidden="true"></span>
+                    <div class="home-strengths-list">
+                        @foreach ($copy['home_contact_banner_items'] as $index => $item)
+                            <article>
+                                <span aria-hidden="true"><i class="fa-solid {{ $strengthIcons[$index] ?? 'fa-check' }}"></i></span>
+                                <h3>{{ $item }}</h3>
                             </article>
                         @endforeach
                     </div>
                 </section>
-
                 <section class="home-contact-section" id="home-contact">
                     <div class="home-contact-copy">
                         <h2 class="home-contact-title">{{ $copy['home_contact_title'] }}</h2>
@@ -537,3 +445,4 @@
     </main>
 </body>
 </html>
+

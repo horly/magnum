@@ -55,27 +55,18 @@
         $copy['title'] = 'Magnum Multi Services SARL - ' . $copy['operations_hero_title'];
     }
 
-    $heroImage = '/images/services-hero.jpg';
+    $serviceHeroImages = [
+        'sourcing' => '/images/home-card-sourcing.png',
+        'supply' => '/images/home-proposal-ship.png',
+        'logistics' => '/images/home-card-logistics.png',
+        'oem' => '/images/home-card-oem.png',
+        'trade' => '/images/home-card-trade.png',
+        'consulting' => '/images/home-card-consulting.png',
+        'equipment' => '/images/services-oem.jpg',
+        'operations' => '/images/home-carousel-4.png',
+    ];
 
-    if ($isSupply) {
-        $heroImage = '/images/services-supply-hero.jpg';
-    }
-
-    if ($isLogistics) {
-        $heroImage = '/images/services-office.jpg';
-    }
-
-    if ($isOem) {
-        $heroImage = '/images/services-oem.jpg';
-    }
-
-    if ($isTrade) {
-        $heroImage = '/images/services-trade.jpg';
-    }
-
-    if ($isConsulting) {
-        $heroImage = '/images/services-consulting-hero.jpg';
-    }
+    $heroImage = $serviceHeroImages[$service] ?? '/images/services-hero.jpg';
 @endphp
 <!DOCTYPE html>
 <html lang="{{ $locale }}">
@@ -90,12 +81,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
-    <link href="{{ asset('css/services.css') }}?v=20260618-3" rel="stylesheet">
-    <script src="{{ asset('js/services.js') }}?v=20260618-3" defer></script>
+    <link href="{{ asset('css/services.css') }}?v=20260715-3" rel="stylesheet">
+    <script src="{{ asset('js/services.js') }}?v=20260715-2" defer></script>
 </head>
 <body id="top">
-    <main class="page">
-        <section class="hero" style="--hero-image: url('{{ $heroImage }}')">
+    <main class="page services-page">
+        <section class="hero services-hero" style="--hero-image: url('{{ $heroImage }}')">
             <header class="topbar d-flex align-items-start gap-4">
                 <a class="brand flex-shrink-0" href="{{ route('home', ['lang' => $locale]) }}">
                     <img src="/images/logo-full-ntwb.png" alt="Magnum Multi Services SARL">
@@ -105,22 +96,7 @@
                     <i class="fa-solid fa-bars open-icon" aria-hidden="true"></i>
                     <i class="fa-solid fa-xmark close-icon" aria-hidden="true"></i>
                 </button>
-
-                <nav class="main-nav" id="primary-navigation" aria-label="Primary navigation">
-                    <a href="{{ route('home', ['lang' => $locale]) }}">{{ $copy['nav_home'] }}</a>
-                    <a href="{{ route('about', ['lang' => $locale]) }}">{{ $copy['nav_about'] }}</a>
-                    <a class="active" href="{{ route('services', ['lang' => $locale]) }}">{{ $copy['nav_services'] }}</a>
-                    <a href="{{ route('sectors', ['lang' => $locale]) }}">{{ $copy['nav_industrial'] }}</a>
-                    <a href="{{ route('ssl-schedules', ['lang' => $locale]) }}">{{ $copy['nav_ssl'] }}</a>
-                    <a href="{{ route('sites', ['lang' => $locale]) }}">{{ $copy['nav_locations'] }}</a>
-                    <a href="{{ route('privacy-policy', ['lang' => $locale]) }}">{{ $copy['footer_privacy'] }}</a>
-
-                    <span class="language-switch" aria-label="Languages">
-                        <a href="{{ $langLink('fr') }}" aria-label="Afficher le site en francais">Fr</a>
-                        <a class="lang-toggle" href="{{ $langLink($isFr ? 'en' : 'fr') }}" role="switch" aria-checked="{{ $isFr ? 'false' : 'true' }}" aria-label="{{ $isFr ? 'Passer en anglais' : 'Switch to French' }}"></a>
-                        <a href="{{ $langLink('en') }}" aria-label="Display site in English">En</a>
-                    </span>
-                </nav>
+                @include('partials.main-nav', ['activePage' => 'services'])
             </header>
 
             <div class="hero-copy">
